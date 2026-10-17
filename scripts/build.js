@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const html = await readFile(`${root}index.html`, 'utf8');
 const css = await readFile(`${root}src/styles.css`, 'utf8');
-const modules = await Promise.all(['core','library','app'].map(name=>readFile(`${root}src/${name}.js`,'utf8')));
+const modules = await Promise.all(['core','library','ui','app'].map(name=>readFile(`${root}src/${name}.js`,'utf8')));
 const js = modules.map(source=>source.replace(/^import .*;\n/gm,'').replace(/^export /gm,'')).join('\n');
 const portable = html.replace('<link rel="stylesheet" href="src/styles.css">',()=>`<style>\n${css}\n</style>`).replace('<script type="module" src="src/app.js"></script>',()=>`<script>\n(()=>{\n${js.replace(/<\/script/gi,'<\\/script')}\n})();\n</script>`);
 await mkdir(`${root}dist`,{recursive:true});

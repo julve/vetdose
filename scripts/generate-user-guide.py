@@ -132,7 +132,7 @@ def page_frame(canvas, doc):
     canvas.setStrokeColor(BORDER)
     canvas.line(44, 38, PAGE_W-44, 38)
     canvas.setFont('Guide', 8)
-    canvas.drawString(44, 24, 'VetDose 1.0 · Ejemplos ficticios · Sin pautas precargadas')
+    canvas.drawString(44, 24, 'VetDose 1.1 · Ejemplos ficticios · Sin pautas precargadas')
     canvas.drawRightString(PAGE_W-44, 24, f'{doc.page:02} / 10')
     canvas.restoreState()
 
@@ -190,10 +190,10 @@ story.extend([steps([
     '<b>Vía y frecuencia:</b> registra la vía y escribe el intervalo en «Administrar cada (horas)». Para una dosis diaria, este intervalo es obligatorio. La duración en días es opcional.',
     '<b>Presentación:</b> selecciona la forma farmacéutica e introduce el contenido, su unidad y los datos que aparezcan. En líquidos debes indicar el volumen de referencia en mL.',
     '<b>Resultado:</b> pulsa «Calcular cantidad». En teléfono, la pantalla se desplaza al resultado o al error que debes corregir.',
-]), gap(12), box('<b>Antes de calcular:</b> comprueba el peso, la unidad de dosis y la etiqueta del producto. Un número correcto con una unidad equivocada produce una cantidad equivocada.', True),
+]), gap(12), box('<b>Cómo leer las señales de la app</b><br/><b>* = dato obligatorio</b> para la operación actual. Los asteriscos se adaptan: frecuencia en dosis diaria, volumen final en un vial y cantidad medida en modo contenido.<br/>Los ejemplos bajo cada caja muestran el formato: son ficticios, no llenan los campos y no son recomendaciones. Los iconos de reloj, gota y diana señalan tiempo, volumen y dosis.', True),
     gap(13), p('Cómo escribir números', 'sub'),
     p('Puedes usar punto o coma decimal: <b>2.5</b> y <b>2,5</b> representan lo mismo. No uses separadores de miles ni combines punto y coma en el mismo número.'),
-    p('Cambiar cualquier entrada borra el resultado anterior hasta que vuelvas a calcular. Los cambios de esta pantalla son temporales: no modifican automáticamente la biblioteca.', 'small')])
+    p('Comprueba peso, unidad y etiqueta. Cambiar una entrada borra el resultado hasta que vuelvas a calcular. Los cambios de Calculadora no modifican automáticamente la biblioteca.', 'small')])
 
 # 4. Units and daily example.
 section(3, 'Entiende las unidades de dosis', 'units', 'Lee la unidad completa: «por dosis» y «por día» tienen significados diferentes.')
@@ -239,6 +239,7 @@ story.extend([screenshot('library.png',WIDTH,120),gap(8),p('Captura con un regis
         'Pulsa <b>Guardar medicamento</b>. Para editarlo después, vuelve a Biblioteca y pulsa Editar.',
         'Para calcular, pulsa <b>Usar</b>. En Calculadora selecciona expresamente la <b>Pauta registrada</b> y la <b>Presentación registrada</b>; revisa los datos del paciente y calcula.',
     ]),gap(7),box('<b>Si registraste un intervalo de dosis:</b> al cargar la pauta, la dosis queda vacía. Debes elegir expresamente un valor dentro de los límites; la app no elige un punto medio.'),gap(9),
+    p('En Biblioteca, * indica lo necesario para guardar. Si escribes un límite del intervalo, ambos extremos pasan a ser obligatorios; la dosis puntual deja de serlo. Una pauta diaria siempre requiere intervalo en horas.', 'small'),
     p('<b>Buscar y filtrar:</b> busca por nombre o principio activo y filtra por especie. <b>Duplicar:</b> crea una copia editable que debes guardar. <b>Eliminar:</b> pide confirmación y elimina sus pautas y presentaciones.', 'small'),
     p('Una pauta de otra especie se deshabilita y no puede calcularse con ese paciente. Editar un dato en Calculadora no actualiza el medicamento guardado.', 'small')])
 
@@ -249,13 +250,13 @@ story.extend([grid(['Presentación', 'Qué introducir / qué se obtiene'],[
     ['<b>Cápsula o sobre</b>','Contenido por unidad. El resultado puede ser decimal; la app no asume que pueda abrirse o dividirse.'],
     ['<b>Solución / suspensión</b>','Cantidad de activo y volumen de referencia. Si la etiqueta dice mg/5 mL, el volumen de referencia es <b>5</b>. Resultado en mL.'],
     ['<b>Inyectable</b>','Cantidad en mg, µg o UI y volumen de referencia en mL. Resultado en mL.'],
-    ['<b>Vial reconstituido</b>','Contenido total y <b>volumen FINAL</b> en mL. El diluyente añadido es un dato distinto y no sustituye al volumen final.'],
+    ['<b>Vial reconstituido</b>','Contenido total y <b>volumen FINAL *</b> en mL. El diluyente añadido es opcional y no sustituye al volumen final.'],
     ['<b>Polvo / granulado</b>','Contenido en mg/g o µg/g. Resultado en gramos de preparación.'],
     ['<b>Porcentaje p/v</b>','Gramos de activo por 100 mL de preparación. Permite obtener concentración de masa por volumen.'],
     ['<b>Porcentaje p/p</b>','Gramos de activo por 100 g de preparación. Permite obtener concentración de masa por masa.'],
     ['<b>Porcentaje v/v</b>','mL de activo por 100 mL. Solo contenido en volumen medido; no se convierte a masa sin datos suficientes.'],
-    ['<b>Gotas</b>','Concentración por volumen. Solo muestra equivalencia en gotas si introduces el factor gotas/mL del producto y dispositivo.'],
-    ['<b>Crema / ungüento</b>','Usa «Contenido en cantidad medida». Introduce concentración y gramos medidos. El resultado es contenido de activo, no una dosis sistémica.'],
+    ['<b>Gotas</b>','Concentración por volumen. El factor gotas/mL es opcional para calcular mL, pero necesario para mostrar gotas.'],
+    ['<b>Crema / ungüento</b>','Usa «Contenido en cantidad medida». Introduce concentración y gramos medidos. Frecuencia y duración se desactivan; no es una dosis sistémica.'],
 ],[128,WIDTH-128]),gap(11),
     box('<b>No se inventan parámetros.</b> Sin volumen final, factor de gotas u otros datos necesarios, no debes completar el cálculo con suposiciones.',True),gap(7),
     p('Para un tópico porcentual, elige «Preparación porcentual» y «Contenido en cantidad medida». No utilices el contenido obtenido como una pauta terapéutica sistémica.', 'small')])
@@ -306,14 +307,14 @@ checks = [
     ('Respaldo','La biblioteca tiene una copia JSON fuera del navegador y se sabe dónde está guardada.'),
 ]
 story.extend([grid(['Revisión', 'Confirma'],[[f'<b>{a}</b>',b] for a,b in checks],[110,WIDTH-110]),gap(13),
-    box('<b>Qué no hace VetDose 1.0</b><br/>No elige tratamientos ni dosis. No calcula ajustes renales o hepáticos, límites terapéuticos, toxicidad, infusiones continuas ni combinaciones de principios activos. No convierte UI a masa y no garantiza almacenamiento indefinido.',True),gap(13),
+    box('<b>Qué no hace VetDose 1.1</b><br/>No elige tratamientos ni dosis. No calcula ajustes renales o hepáticos, límites terapéuticos, toxicidad, infusiones continuas ni combinaciones de principios activos. No convierte UI a masa y no garantiza almacenamiento indefinido.',True),gap(13),
     p('Guarda y comparte esta guía', 'sub'),
-    p('Puedes enviar este PDF por WhatsApp o correo. Para usar la app, comparte el enlace del sitio. Para trasladar una biblioteca, comparte únicamente su respaldo JSON por el medio que decidas.'),
+    p('En la app: <b>Configuración → Descargar guía PDF</b>. Puedes enviar el PDF por WhatsApp o correo. Comparte el enlace del sitio para usar la app, y el archivo JSON para trasladar una biblioteca.'),
     p(f'<link href="{SITE}" color="#126B5E"><b>Abrir el sitio de VetDose</b></link> · Disponible cuando el responsable active su publicación.', 'small'),
-    p('Guía de VetDose 1.0 con capturas de un navegador de pruebas y datos ficticios. Los menús del teléfono pueden variar. Sin validación física en iPhone o Android.', 'small')])
+    p('Guía de VetDose 1.1 con capturas de un navegador de pruebas y datos ficticios. Los menús del teléfono pueden variar. Sin validación física en iPhone o Android.', 'small')])
 
 doc = GuideDocument(str(OUTPUT), pagesize=A4, leftMargin=44, rightMargin=44, topMargin=57, bottomMargin=49,
-                    title='VetDose 1.0 — Guía práctica de usuario', author='VetDose',
+                    title='VetDose 1.1 — Guía práctica de usuario', author='VetDose',
                     subject='Uso de la calculadora, biblioteca y respaldos. Ejemplos ficticios.',
                     pageCompression=1, allowSplitting=1)
 doc.addPageTemplates(PageTemplate(id='guide', frames=[Frame(44,49,WIDTH,PAGE_H-106,leftPadding=0,rightPadding=0,topPadding=0,bottomPadding=0)], onPage=page_frame))

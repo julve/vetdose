@@ -1,4 +1,4 @@
-# Validación ejecutada de VetDose 1.0
+# Validación ejecutada de VetDose 1.1
 
 Entorno real: Linux, Node.js 24.19.0, npm 11.9.0 y Chromium 154.0.8037.57. Se usaron exclusivamente sustancias y valores matemáticos ficticios; no se incluyeron dosis terapéuticas ni bibliotecas precargadas.
 
@@ -8,7 +8,7 @@ Entorno real: Linux, Node.js 24.19.0, npm 11.9.0 y Chromium 154.0.8037.57. Se us
 | --- | --- |
 | `npm test` | 104 pruebas aprobadas, 0 fallidas, 0 omitidas |
 | `npm run build` | HTML autocontenido generado correctamente |
-| `npm run test:ui` | 27 comprobaciones aprobadas y 1 omitida por política del navegador |
+| `npm run test:ui` | 32 comprobaciones aprobadas y 1 omitida por política del navegador |
 | HTML portable servido; luego red desactivada | Cálculo correcto; una única solicitud para el HTML, ninguna dependencia adicional |
 | Interfaz de escritorio y modo táctil en 320, 360, 390 y 430 px; horizontal 844 × 390 px | Sin desbordamiento horizontal; cálculo, biblioteca y respaldos probados en cada ancho vertical |
 | GitHub Pages preparado en `docs/index.html` | Idéntico al HTML portable; una sola solicitud, sin rutas absolutas de recursos |
@@ -20,6 +20,8 @@ La suite matemática cubre las ocho unidades de dosificación, dosis diaria y po
 La suite de biblioteca verifica escritura y lectura, fallo de cuota, datos corruptos, importación/exportación, identidades y asociaciones, esquemas, fechas, campos no reconocidos, límites de tamaño, conflictos y duplicados. Ninguna prueba clínica se infiere de estas comprobaciones matemáticas.
 
 La suite de interfaz ejecuta creación, edición, duplicación, eliminación con confirmación, carga de biblioteca en calculadora, separación de cambios temporales, bloqueo por especie, selección explícita de dosis dentro de un intervalo, exportación descargable sin paciente, importación por fusión y reemplazo, rechazo de archivos inválidos, persistencia tras recarga, tema oscuro, modo tópico, v/v incompatible con masa, ancho móvil, ausencia de solicitudes externas y errores de JavaScript, almacenamiento denegado, recuperación de datos corruptos, texto importado sin ejecución y protección ante una copia anterior en otra pestaña. Los recorridos táctiles de los cuatro anchos comprueban además campos de una columna, texto de entrada de al menos 16 px, botones de al menos 44 px, casillas ampliadas, menú inferior, resultado visible tras calcular y creación/exportación/importación de una biblioteca. La versión de Pages se sirve y prueba bajo una ruta de proyecto.
+
+La versión 1.1 añade cinco comprobaciones de interfaz: asteriscos y ayudas accesibles sin precargar valores; obligatoriedad dinámica de frecuencia sin pérdida de entradas; campos requeridos de viales, gotas y contenido; dosis o intervalo en Biblioteca con límites cero; y descarga del PDF desde el sitio generado y la entrada de desarrollo. Las ayudas tienen `aria-describedby`, los controles señalan su estado `required`/`aria-required` y los iconos decorativos se ocultan a lectores de pantalla. Se verificó además contenido medido con una pauta de intervalo seleccionada, sin exigir una dosis ajena a esa operación.
 
 El reporte del último recorrido y las capturas se regeneran en `test-results/`. La prueba `file://` queda registrada como omitida por la política administrativa de este entorno, sin modificar ni eludir esa política. La prueba independiente del HTML servido y desconectado sí fue ejecutada.
 

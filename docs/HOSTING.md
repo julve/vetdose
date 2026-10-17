@@ -38,4 +38,6 @@ npm run test:ui
 
 Commit and push the source and generated `docs/index.html` to the selected branch. Once branch-based Pages publishing is enabled, GitHub redeploys changes to `/docs`. Keep the existing website origin stable to retain access to the browser's local library. A changed origin requires transferring the library through JSON.
 
+For version 1.1, the publication branch remains `vetdose-v1.0`; its name does not need to match the app version. The updated page displays **1.1**, required-field asterisks, fictional input examples and explanatory icons. Publish the regenerated `docs/Guia-de-usuario-VetDose.pdf` and `docs/guide-assets/` together with the page. The PDF download in Settings points to that file beside the hosted HTML. The optional portable ZIP is generated with `python3 scripts/package-portable.py` after rebuilding the app and PDF.
+
 Use **Actions → pages build and deployment** in GitHub to inspect publication failures. A successful local build does not establish successful hosting.

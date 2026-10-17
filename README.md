@@ -1,10 +1,21 @@
-# VetDose 1.0
+# VetDose 1.1
 
 Calculadora matemática para uso veterinario en caninos y felinos. **No contiene, propone ni descarga dosis farmacológicas.** El profesional introduce cada pauta, concentración, frecuencia y parámetro. Un cálculo correcto no determina que una administración sea clínicamente adecuada.
 
 **Guía para usuarios:** [Descargar PDF de 10 páginas](https://github.com/julve/vetdose/raw/refs/heads/vetdose-v1.0/docs/Guia-de-usuario-VetDose.pdf) · [Ver el PDF en GitHub](docs/Guia-de-usuario-VetDose.pdf). Incluye uso en teléfono, cálculos con datos ficticios, biblioteca, respaldos y solución de problemas. Puedes descargar el archivo y enviarlo por WhatsApp. Si el repositorio es privado, GitHub requiere una cuenta con acceso para descargarlo; los destinatarios del archivo PDF ya descargado no necesitan entrar a GitHub.
 
 La calculadora funciona sin cuentas, suscripciones, CDN, fuentes remotas, telemetría ni almacenamiento de datos en la nube. Se puede distribuir como archivo local o como sitio estático en GitHub Pages. El alojamiento entrega el código de la aplicación; los cálculos y todos los datos de biblioteca permanecen en el navegador. El identificador de paciente solo permanece en memoria durante la sesión; no forma parte de los respaldos. El botón de impresión permite incluirlo expresamente en el resultado impreso.
+
+## Ayudas de la versión 1.1
+
+- **\* Obligatorio:** identifica los datos necesarios para la operación elegida. Las unidades y opciones que ya tienen una selección también se marcan para que se revisen.
+- La frecuencia lleva * en una dosis diaria; en una dosis por administración es opcional. El total del tratamiento requiere tanto frecuencia como duración.
+- Un vial requiere volumen final; el diluyente añadido es informativo. El factor gotas/mL es opcional para obtener mL y necesario para mostrar gotas.
+- En contenido medido se requiere la cantidad de preparación, sin exigir una dosis. Frecuencia y duración se desactivan y el resultado las indica como no aplicables. Especie, peso, principio activo y datos de presentación siguen siendo necesarios.
+- En Biblioteca los * indican lo necesario para guardar. Una pauta admite dosis puntual o un intervalo mínimo–máximo completo; al introducir un extremo se requieren ambos. Los valores cero se reconocen como entradas explícitas.
+- Todas las cajas tienen ayuda debajo, asociada al control para lectores de pantalla. Los ejemplos numéricos son ficticios, no se introducen automáticamente ni constituyen recomendaciones.
+- Los símbolos acompañan los textos: reloj para frecuencia, gota para volumen, diana para dosis, frasco para presentación y libro para biblioteca. La información no depende solo del color o del icono.
+- El manual actualizado se descarga desde **Configuración → Descargar guía PDF**. El esquema de biblioteca sigue siendo 1 y los respaldos existentes continúan siendo compatibles.
 
 ## Sitio web para teléfonos y computadoras
 
@@ -21,6 +32,8 @@ Necesita conexión para abrir o recargar el sitio web. Una vez cargado, puede ca
 ## Empezar sin instalar herramientas
 
 Copie **`dist/VetDose.html`** a su computadora y ábralo con un navegador que permita ejecutar HTML local. Este único archivo incluye estilos y JavaScript; no necesita los archivos fuente, Node.js ni conexión a Internet para calcular.
+
+También puede descargar el [paquete portable 1.1.0 con el manual PDF](https://github.com/julve/vetdose/raw/refs/heads/vetdose-v1.0/dist/VetDose-1.1.0.zip). Extraiga todo el ZIP: el PDF debe quedar junto al HTML para abrirlo desde Configuración. El paquete de la versión 1.0 se conserva como archivo de la entrega anterior.
 
 El acceso a archivos locales puede estar restringido por el navegador, el sistema operativo o políticas administrativas. La apertura `file://` no garantiza almacenamiento persistente, ni una experiencia equivalente en iOS. En este entorno de desarrollo esa navegación está bloqueada por la política administrativa de Chromium y no pudo validarse. Se validó el mismo HTML servido por HTTP local y su cálculo después de desconectar la red.
 
@@ -88,7 +101,7 @@ Para un tópico porcentual elija **Preparación porcentual** y **Contenido en ca
 
 Las fracciones ½, ¼, ⅛ y ⅓ se pueden registrar como autorizadas en una tableta. Una coincidencia matemática no valida divisibilidad física, estabilidad ni idoneidad clínica. Las equivalencias fraccionarias son informativas; no se ajusta la dosis ni se redondea a unidades administrables. Tampoco se redondean gotas.
 
-No se implementa conversión UI↔masa, incluso si se dispone de un factor: se conserva esa separación en la versión 1.0. No se inventan densidades para v/v. Aerosoles, parches, formulaciones especiales, liberación modificada y combinaciones de principios activos no se calculan. No existen ajustes renales o hepáticos, límites terapéuticos, toxicidad, CRI, fluidoterapia ni recomendaciones clínicas.
+No se implementa conversión UI↔masa, incluso si se dispone de un factor: se conserva esa separación en la versión 1.1. No se inventan densidades para v/v. Aerosoles, parches, formulaciones especiales, liberación modificada y combinaciones de principios activos no se calculan. No existen ajustes renales o hepáticos, límites terapéuticos, toxicidad, CRI, fluidoterapia ni recomendaciones clínicas.
 
 ## Fórmulas y precisión
 
@@ -133,6 +146,7 @@ Use una sola pestaña para editar. Se detectan cambios externos mediante eventos
 index.html             Entrada de desarrollo
 src/core.js            Unidades, normalización, cálculos y advertencias
 src/library.js         Esquema, validación, persistencia y respaldos
+src/ui.js              Iconos y ayudas contextuales de los campos
 src/app.js             Interfaz y estado temporal, sin cálculos duplicados
 src/styles.css         Diseño responsive, claro, oscuro e impresión
 scripts/build.js       Empaquetado determinista sin dependencias
@@ -161,7 +175,7 @@ La ruta de caché anterior corresponde al entorno cloud; en otra computadora pue
 
 El runner usa `--no-sandbox` para Chromium en este contenedor de pruebas aislado. Si su sistema permite el sandbox normal, ejecute con `BROWSER_SANDBOX=1`. Esta opción solo corresponde al navegador de pruebas y no altera la aplicación, TLS ni la validación de paquetes.
 
-No hay dependencias de terceros en el producto distribuido. El empaquetador incorpora únicamente los tres módulos y los estilos locales; los datos de pruebas no se incluyen. Después de modificar fuentes, regenere tanto el archivo portable como `docs/index.html` con `npm run build` y repita los controles correspondientes. El ZIP portable es un paquete de distribución; actualícelo también al publicar una nueva versión.
+No hay dependencias de terceros en el producto distribuido. El empaquetador incorpora únicamente los cuatro módulos y los estilos locales; los datos de pruebas no se incluyen. Después de modificar fuentes, regenere tanto el archivo portable como `docs/index.html` con `npm run build` y repita los controles correspondientes. El ZIP portable es un paquete de distribución; actualícelo también al publicar una nueva versión.
 
 ### Regenerar la guía PDF
 
@@ -171,6 +185,7 @@ La guía está en `docs/Guia-de-usuario-VetDose.pdf`. Sus capturas usan datos fi
 node scripts/capture-guide.js
 python3 -m pip install -r scripts/guide-requirements.txt
 python3 scripts/generate-user-guide.py
+python3 scripts/package-portable.py
 ```
 
 Estas herramientas solo se necesitan para editar la documentación; no son dependencias de la app. Puede indicar la carpeta de fuentes TTF con `GUIDE_FONT_DIR`. El generador comprueba que la guía tenga las 10 páginas previstas; revise también las páginas renderizadas al modificar el contenido. Una vez publicado GitHub Pages desde `/docs`, el PDF también se sirve en la dirección del sitio seguida de `Guia-de-usuario-VetDose.pdf`.

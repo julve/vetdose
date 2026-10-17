@@ -185,6 +185,65 @@ try {
     const c=await browser.newContext();const p=await c.newPage();const requests=[];p.on('request',r=>requests.push(r.url()));
     await p.goto(`http://127.0.0.1:${testPort}/docs/index.html`);await p.locator('#weight').waitFor();assert.equal(requests.length,1);assert.ok(!(await p.content()).includes('src="/'));await c.close();
   });
+  await check('asteriscos y ejemplos accesibles sin rellenar datos de cálculo',async()=>{
+    const c=await browser.newContext();const p=await c.newPage();await p.goto(`http://127.0.0.1:${testPort}/docs/`);await p.locator('#weight').waitFor();
+    for(const id of ['weight','active','dose','doseUnit','cp-type','cp-amount','cp-unit','cp-perVolume']) {
+      assert.equal(await p.locator(`#${id}`).getAttribute('aria-required'),'true',id);
+      assert.ok(await p.locator(`[data-field="${id}"] .required-marker`).isVisible(),id);
+    }
+    for(const id of ['patient','name','indication','route','intervalHours','durationDays']) {
+      assert.equal(await p.locator(`#${id}`).getAttribute('aria-required'),'false',id);
+      assert.ok(!(await p.locator(`[data-field="${id}"] .required-marker`).isVisible()),id);
+    }
+    for(const id of ['weight','patient','name','active','dose','intervalHours','durationDays','cp-amount','cp-perVolume']) assert.equal(await p.locator(`#${id}`).inputValue(),'');
+    for(const wrapper of await p.locator('.form-field').all()) {
+      const control=wrapper.locator('input,select,textarea');const id=await control.getAttribute('id');
+      assert.equal(await control.getAttribute('aria-describedby'),`${id}-hint`);assert.ok((await p.locator(`#${id}-hint`).innerText()).trim().length>15);
+      assert.ok(await wrapper.locator('svg[aria-hidden="true"]').count()>0);
+    }
+    await expectText(p.locator('.form-legend'),/ficticios/);await c.close();
+  });
+  await check('frecuencia obligatoria solo en dosis diaria, sin perder entradas',async()=>{
+    const c=await browser.newContext();const p=await c.newPage();await p.goto(`http://127.0.0.1:${testPort}/docs/`);
+    for(const [id,value] of Object.entries({weight:'3',active:'Sustancia ficticia',dose:'24','cp-amount':'12','cp-perVolume':'1'})) await p.locator(`#${id}`).fill(value);
+    await p.locator('#doseUnit').selectOption('mg/kg/día');assert.equal(await p.locator('#intervalHours').getAttribute('aria-required'),'true');assert.ok(await p.locator('[data-field="intervalHours"] .required-marker').isVisible());
+    assert.equal(await p.locator('#weight').inputValue(),'3');assert.equal(await p.locator('#dose').inputValue(),'24');assert.equal(await p.locator('#intervalHours').inputValue(),'');
+    await action(p,'calculate').click();await expectText(p.locator('#result'),/intervalo/);
+    await p.locator('#intervalHours').fill('8');await action(p,'calculate').click();await expectText(p.locator('#result .result-number'),/^2 mL$/);
+    await p.locator('#doseUnit').selectOption('mg/kg/dosis');assert.equal(await p.locator('#intervalHours').getAttribute('aria-required'),'false');
+    await p.locator('#dose').fill('0');await action(p,'calculate').click();await expectText(p.locator('#result .result-number'),/^0 mL$/);await c.close();
+  });
+  await check('campos requeridos de viales, gotas y contenido medido coinciden con el cálculo',async()=>{
+    const c=await browser.newContext();const p=await c.newPage();await p.goto(`http://127.0.0.1:${testPort}/docs/`);
+    for(const [id,value] of Object.entries({weight:'4',active:'Sustancia ficticia',dose:'6'})) await p.locator(`#${id}`).fill(value);
+    await p.locator('#cp-type').selectOption('vial');assert.equal(await p.locator('#cp-finalVolume').getAttribute('aria-required'),'true');assert.equal(await p.locator('#cp-diluentVolume').getAttribute('aria-required'),'false');
+    await p.locator('#cp-amount').fill('240');await p.locator('#cp-diluentVolume').fill('10');await action(p,'calculate').click();await expectText(p.locator('#result'),/volumen FINAL/i);
+    await p.locator('#cp-finalVolume').fill('12');await action(p,'calculate').click();await expectText(p.locator('#result .result-number'),/^1[.,]2 mL$/);
+    await p.locator('#cp-type').selectOption('drops');assert.equal(await p.locator('#cp-dropFactor').getAttribute('aria-required'),'false');assert.equal(await p.locator('#cp-dropFactor').inputValue(),'');
+    await p.locator('#cp-amount').fill('12');await p.locator('#cp-perVolume').fill('1');await action(p,'calculate').click();await expectText(p.locator('#result .result-number'),/^2 mL$/);assert.ok(!(await p.locator('#result').innerText()).includes('Equivalencia en gotas'));
+    await p.locator('#doseUnit').selectOption('mg/kg/día');await p.locator('#cp-type').selectOption('topical');assert.equal(await p.locator('#dose').count(),0);assert.equal(await p.locator('#measuredQuantity').getAttribute('aria-required'),'true');assert.equal(await p.locator('#intervalHours').getAttribute('aria-required'),'false');
+    assert.ok(await p.locator('#intervalHours').isDisabled());assert.ok(await p.locator('#durationDays').isDisabled());
+    await p.locator('#measuredQuantity').fill('3');await p.locator('#cp-amount').fill('2');await action(p,'calculate').click();await expectText(p.locator('#result .result-number'),/^6 mg$/);await expectText(p.locator('#result'),/No aplica: contenido medido/);
+    await p.locator('#cp-type').selectOption('liquid');assert.ok(await p.locator('#intervalHours').isEnabled());assert.equal(await p.locator('#intervalHours').getAttribute('aria-required'),'true');await c.close();
+  });
+  await check('biblioteca: obligatoriedad de dosis o rango, incluidos límites cero',async()=>{
+    const c=await browser.newContext();const p=await c.newPage();await p.goto(`http://127.0.0.1:${testPort}/docs/`);await nav(p,'library');await action(p,'new-drug').click();
+    assert.equal(await p.locator('#ed-name').getAttribute('aria-required'),'true');assert.equal(await p.locator('#ed-reference').getAttribute('aria-required'),'false');
+    await p.locator('#ed-name').fill('Ejemplo ficticio de intervalo');await p.locator('#ed-active').fill('Sustancia ficticia');await action(p,'add-regimen').click();await p.locator('#r0-indication').fill('Ejemplo de rango');
+    assert.equal(await p.locator('#r0-dose').getAttribute('aria-required'),'true');assert.equal(await p.locator('#r0-min').getAttribute('aria-required'),'false');
+    await p.locator('#r0-min').fill('0');assert.equal(await p.locator('#r0-dose').getAttribute('aria-required'),'false');assert.equal(await p.locator('#r0-max').getAttribute('aria-required'),'true');assert.ok(!(await p.locator('#r0-min-label').innerText()).includes('opcional'));assert.ok(!(await p.locator('#r0-max-label').innerText()).includes('opcional'));await p.locator('#r0-max').fill('2');
+    await p.locator('#r0-doseUnit').selectOption('mg/kg/día');assert.equal(await p.locator('#r0-intervalHours').getAttribute('aria-required'),'true');await p.locator('#r0-intervalHours').fill('8');
+    await action(p,'save-drug').click();await p.locator('#search').waitFor();await action(p,'use').click();await p.locator('#regimenId').selectOption({label:'Ejemplo de rango · Canino'});assert.equal(await p.locator('#dose').inputValue(),'');
+    await p.locator('#weight').fill('4');await p.locator('#cp-type').selectOption('topical');await p.locator('#measuredQuantity').fill('3');await p.locator('#cp-amount').fill('2');await action(p,'calculate').click();await expectText(p.locator('#result .result-number'),/^6 mg$/);await c.close();
+  });
+  await check('guía PDF descargable desde el sitio Pages y la entrada de desarrollo',async()=>{
+    for(const entry of ['/docs/','/']) {
+      const c=await browser.newContext({acceptDownloads:true});const p=await c.newPage();await p.goto(`http://127.0.0.1:${testPort}${entry}`);await nav(p,'settings');
+      assert.equal(await p.locator('#import-file').getAttribute('aria-required'),'true');
+      const downloadPromise=p.waitForEvent('download');await p.getByRole('link',{name:'Descargar guía PDF'}).click();const download=await downloadPromise;
+      const bytes=await readFile(await download.path());assert.ok(bytes.subarray(0,5).equals(Buffer.from('%PDF-')));assert.deepEqual(bytes,await readFile(`${projectRoot}docs/Guia-de-usuario-VetDose.pdf`));await c.close();
+    }
+  });
   await writeFile(`${projectRoot}test-results/browser-report.json`,JSON.stringify({timestamp:new Date().toISOString(),browser:browser.version(),passed,skipped,results},null,2));
   console.log(`\n${passed} comprobaciones de interfaz superadas; ${skipped.length} omitidas (Chromium ${browser.version()}).`);
 } finally {await browser?.close();server.kill('SIGTERM');}

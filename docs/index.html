@@ -14,6 +14,12 @@
 *{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button,a,input,select,textarea{touch-action:manipulation}button{cursor:pointer;border:1px solid var(--border);border-radius:9px;padding:10px 15px;background:var(--surface);color:var(--ink);font-weight:600}button:hover{border-color:var(--accent)}button.primary{background:var(--accent);color:var(--surface);border-color:var(--accent)}button.danger{color:var(--danger)}button:disabled{opacity:.45;cursor:not-allowed}a{color:var(--accent)}:focus-visible{outline:3px solid #2cb697;outline-offset:3px}
 .shell{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--surface);border-right:1px solid var(--border);padding:30px 20px;display:flex;flex-direction:column;gap:35px;position:sticky;top:0;height:100vh}.brand{display:flex;gap:10px;align-items:center;font-size:26px;font-weight:750;letter-spacing:-1px}.brand-mark{display:grid;place-items:center;background:var(--accent);color:var(--surface);width:38px;height:38px;border-radius:12px;font-size:28px}.brand small{display:block;font-size:11px;letter-spacing:1.5px;color:var(--muted);font-weight:600;margin-top:3px}.nav{display:grid;gap:8px}.nav button{text-align:left;border:0;background:transparent;padding:13px}.nav button[aria-current="page"]{background:var(--soft);color:var(--accent)}.nav-icon{display:inline-block;width:27px}.sidebar-bottom{margin-top:auto;color:var(--muted);font-size:12px;line-height:1.7}.local-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:7px}.main{padding:34px 44px 50px;max-width:1500px;width:100%;margin:auto}.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--border);padding-bottom:20px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:1px}.badge{background:var(--soft);color:var(--accent);border-radius:30px;padding:7px 12px;font-size:11px;letter-spacing:.3px}.page-heading{margin:32px 0 24px}.page-heading h1{font-size:30px;letter-spacing:-.8px;margin:0 0 8px;font-weight:650}.page-heading p{color:var(--muted);margin:0;line-height:1.6;font-size:14px}.workspace{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.9fr);gap:24px;align-items:start}.stack{display:grid;gap:20px}.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:var(--shadow)}.card h2{font-size:16px;margin:0 0 21px;display:flex;align-items:center;gap:10px}.step{width:24px;height:24px;display:inline-grid;place-items:center;font-size:11px;border:1px solid var(--border);border-radius:7px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.full{grid-column:1/-1}label,.field{display:block;font-size:12px;font-weight:600;color:var(--ink)}input,select,textarea{display:block;width:100%;margin-top:7px;border:1px solid var(--border);background:var(--surface);border-radius:8px;padding:11px 12px;color:var(--ink);min-height:44px}input::placeholder,textarea::placeholder{color:var(--muted);opacity:.8}textarea{min-height:80px;resize:vertical}.hint{font-size:11px;color:var(--muted);font-weight:400;line-height:1.6;display:block;margin-top:6px}.species{display:flex;gap:10px}.species button{flex:1;text-align:center;font-size:13px}.species button.selected{border-color:var(--accent);background:var(--soft);color:var(--accent)}.notice{font-size:12px;line-height:1.65;padding:12px 15px;border-radius:9px;background:var(--warning-bg);color:var(--warning);border:1px solid #ba934b30}.notice.error{color:var(--danger);border-color:var(--danger)}.notice.info{background:var(--soft);color:var(--accent);border-color:var(--border)}.notice:empty{display:none}.actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:20px}.actions button{font-size:12px}.calculate{width:100%;padding:14px;margin-top:20px}.result-card{position:sticky;top:24px}.result-card h2{justify-content:space-between}.result-empty{padding:38px 8px;text-align:center;color:var(--muted)}.result-empty .symbol{font-size:36px;color:var(--accent);margin-bottom:16px}.result-empty p{font-size:13px;line-height:1.8}.result-label{font-size:11px;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase}.result-main{background:var(--soft);padding:24px 20px;border-radius:10px;margin:18px 0}.result-number{font-size:36px;line-height:1.2;font-weight:650;letter-spacing:-1px;overflow-wrap:anywhere;color:var(--accent)}.result-number small{font-size:17px;font-weight:500;letter-spacing:0}.result-fraction{color:var(--accent);font-size:12px;margin-top:9px}.details{display:grid;grid-template-columns:1fr 1fr;gap:15px;font-size:12px}.details div{min-width:0;overflow-wrap:anywhere}.details dt{color:var(--muted);margin-bottom:4px;font-size:11px}.details dd{margin:0;font-weight:600;white-space:pre-wrap}.formula{padding:15px 0;border-top:1px solid var(--border);margin-top:18px;color:var(--muted);font-size:11px;line-height:1.9;overflow-wrap:anywhere}.warnings{padding-left:16px;font-size:11px;line-height:1.8;color:var(--warning)}.footnote{font-size:11px;color:var(--muted);line-height:1.8;margin-top:23px}.library-toolbar{display:flex;gap:12px;align-items:end;margin-bottom:20px}.library-toolbar label{flex:1}.library-toolbar button{min-height:44px}.drug-list{display:grid;gap:14px}.drug-card{display:flex;align-items:start;justify-content:space-between;gap:14px}.drug-card h3{margin:0 0 7px;font-size:17px}.drug-card p{font-size:13px;color:var(--muted);margin:6px 0}.drug-card .actions{margin:0}.empty-library{text-align:center;padding:60px 20px;color:var(--muted);line-height:1.8}.subheading{font-size:13px;margin:25px 0 15px}.entry{padding:17px;border:1px solid var(--border);border-radius:10px;margin-bottom:14px}.entry h3{font-size:13px;margin:0 0 15px}.entry .remove{margin-top:12px}.checkrow{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.checkrow label{display:flex;gap:6px;align-items:center}.checkrow input{width:auto;min-height:auto;margin:0}.settings{max-width:820px}.settings .card{margin-bottom:20px}.settings p{font-size:13px;line-height:1.8;color:var(--muted)}#toast{position:fixed;bottom:20px;right:20px;max-width:440px;background:var(--ink);color:var(--surface);padding:14px 20px;border-radius:10px;z-index:9;font-size:13px;box-shadow:var(--shadow)}[hidden]{display:none!important}.editor-header{display:flex;justify-content:space-between;gap:15px}.range-note{margin-top:10px}.storage-banner{margin:20px 0}.print-only{display:none}@media(min-width:1400px){.main{padding:40px 60px}.workspace{gap:30px}}
 @media(max-width:1050px){.shell{grid-template-columns:185px 1fr}.sidebar{padding:24px 14px}.main{padding:25px}.workspace{grid-template-columns:1fr}.result-card{position:static}}@media(max-width:650px){.shell{display:block}.sidebar{height:auto;position:static;padding:16px;border-right:0;border-bottom:1px solid var(--border);gap:18px}.brand{font-size:23px}.brand small{font-size:9px}.sidebar-bottom{display:none}.nav{display:flex;gap:3px}.nav button{flex:1;padding:11px 6px;font-size:12px;text-align:center}.nav-icon{width:20px}.main{padding:18px 14px 35px}.page-heading{margin:25px 0 20px}.page-heading h1{font-size:26px}.card{padding:19px}.grid{gap:14px}.topline{font-size:10px}.library-toolbar{flex-wrap:wrap}.library-toolbar label{min-width:120px}.drug-card{display:block}.drug-card .actions{margin-top:16px}.result-number{font-size:32px}.badge{font-size:10px}.entry{padding:12px}#toast{left:14px;right:14px;bottom:14px}.settings .actions{align-items:stretch}}
+.ui-icon{display:inline-block;width:18px;height:18px;flex-shrink:0;vertical-align:-3px;color:var(--accent)}
+.field-title{display:flex;align-items:flex-start;gap:6px;line-height:1.5}.field-title .ui-icon{width:16px;height:16px;margin-top:1px}.field-title>span:not(.required-marker):not(.sr-only){min-width:0}
+.required-marker{color:var(--danger);font-weight:800;font-size:15px;line-height:1.3;flex-shrink:0}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.form-legend{display:flex;align-items:flex-start;gap:10px;border:1px solid var(--border);border-left:3px solid var(--accent);padding:12px 15px;background:var(--soft);border-radius:9px;font-size:12px;line-height:1.7;margin:0 0 22px}.form-legend>.ui-icon{margin-top:3px}.form-legend span:not(.required-marker){color:var(--muted)}
+.form-field{min-width:0}.form-field :disabled{background:var(--soft);color:var(--muted)}.field-example{line-height:1.6}.species-field,.fractions-field{min-width:0;border:0;padding:0;margin:0}.species-field legend,.fractions-field legend{padding:0}.version-tag{font-size:11px;letter-spacing:0;color:var(--muted);font-weight:500}
+button,.button-link{display:inline-flex;align-items:center;justify-content:center;gap:6px}button.primary>.ui-icon{color:inherit}.nav button{justify-content:flex-start}.nav .ui-icon{vertical-align:middle}.button-link{border:1px solid var(--border);border-radius:9px;padding:10px 15px;min-height:44px;font-weight:600;text-decoration:none}.button-link:hover{border-color:var(--accent)}
 /* Touch controls and readable fields also prevent focus zoom in iOS Safari. */
 button{min-height:44px}input,select,textarea{min-width:0}h1,h2,h3,p,label{overflow-wrap:anywhere}#result{scroll-margin-top:24px}
 @media(max-width:650px){
@@ -36,7 +42,7 @@ button{min-height:44px}input,select,textarea{min-width:0}h1,h2,h3,p,label{overfl
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
 @media(pointer:coarse){input,select,textarea{font-size:16px}}
-@media print{.sidebar,.topline,.calculator-input,.page-heading,.footnote,.storage-banner,button{display:none!important}.shell,.workspace{display:block}.main{padding:0}.card{box-shadow:none}.result-card{position:static}.print-only{display:block}body{background:white;color:black}}
+@media print{.sidebar,.topline,.calculator-input,.page-heading,.footnote,.storage-banner,.form-legend,button{display:none!important}.shell,.workspace{display:block}.main{padding:0}.card{box-shadow:none}.result-card{position:static}.print-only{display:block}body{background:white;color:black}}
 
 </style>
 </head>
@@ -253,6 +259,100 @@ function saveLibrary(storage, library) {
 }
 function exportLibrary(library) { return JSON.stringify(validateLibrary(library), null, 2); }
 
+// Presentation only: examples are fictional formatting aids, never default values.
+function icon(name) {
+  const paths = {
+    paw: '<circle cx="7" cy="7" r="2"/><circle cx="17" cy="7" r="2"/><circle cx="3.5" cy="12" r="1.5"/><circle cx="20.5" cy="12" r="1.5"/><path d="M7 20c-3-2 1-8 5-8s8 6 5 8c-2 1-3-1-5-1s-3 2-5 1Z"/>',
+    scale: '<path d="M4 6h16v15H4zM8 6a4 4 0 0 1 8 0M12 11v4l3 2"/>',
+    pill: '<path d="m8 16 8-8M5 19a5.7 5.7 0 0 1 0-8l6-6a5.7 5.7 0 0 1 8 8l-6 6a5.7 5.7 0 0 1-8 0Z"/>',
+    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+    ruler: '<path d="M3 5h18v14H3zM7 5v5m5-5v8m5-8v5"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/>',
+    calendar: '<path d="M4 5h16v16H4zM8 3v4m8-4v4M4 10h16m-11 4h1m4 0h1m-6 3h1"/>',
+    flask: '<path d="M9 3h6m-5 0v7l-6 9a1 1 0 0 0 1 2h14a1 1 0 0 0 1-2l-6-9V3M7 15h10"/>',
+    drop: '<path d="M12 3C9 8 5 12 5 16a7 7 0 0 0 14 0c0-4-4-8-7-13Z"/>',
+    book: '<path d="M3 4h7l2 2 2-2h7v16h-7l-2 2-2-2H3zM12 6v16"/>',
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/>',
+    calculator: '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h1m6 0h1m-8 4h1m6 0h1m-8 4h1m6 0h1"/>',
+    download: '<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',
+    upload: '<path d="M12 16V4m-5 5 5-5 5 5M4 16v5h16v-5"/>',
+    save: '<path d="M4 3h13l4 4v14H3V3zM7 3v6h10V3M7 21v-8h10v8"/>',
+    settings: '<circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"/>',
+    text: '<path d="M4 5h16M12 5v15m-4 0h8"/>',
+  };
+  return `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${paths[name] || paths.info}</svg>`;
+}
+
+const present = value => value !== null && value !== undefined && String(value).trim() !== '';
+function fieldGuide(id, {calc = {}, draft = {}} = {}) {
+  const guides = {
+    weight: {required:true, symbol:'scale', hint:'Ej.: 4 o 4,5. Escriba el peso actual en kilogramos, mayor que cero.'},
+    patient: {hint:'Ej.: Paciente de prueba. Opcional; solo permanece en esta sesión.'},
+    name: {symbol:'pill', hint:'Ej.: Producto de práctica (nombre ficticio). Opcional para el cálculo.'},
+    active: {required:true, symbol:'pill', hint:'Ej.: Sustancia ficticia X. Identifique un solo principio activo.'},
+    indication: {symbol:'text', hint:'Ej.: Práctica de cálculo (texto ficticio). Opcional.'},
+    drugId: {symbol:'book', hint:'Ej.: Entrada manual para calcular sin guardar, o un medicamento que usted registró.'},
+    regimenId: {symbol:'book', hint:'Ej.: una pauta registrada para la especie del paciente, o Pauta manual.'},
+    presentationId: {symbol:'flask', hint:'Ej.: una presentación guardada, o Presentación manual para introducir sus datos.'},
+    mode: {required:true, symbol:'calculator', hint:'Ej.: Cálculo por dosis; para tópicos, Contenido en cantidad medida.'},
+    dose: {required:true, symbol:'target', hint:`Ejemplo ficticio: 6 ${calc.doseUnit || 'mg/kg/dosis'}; escriba solo 6. Sin valor clínico.`},
+    doseUnit: {required:true, symbol:'ruler', hint:'Ej.: mg/kg/dosis es por administración; mg/kg/día es el total diario. Verifique su pauta.'},
+    route: {hint:'Ej.: nombre de la vía que usted haya indicado. Opcional para la cuenta matemática.'},
+    intervalHours: {required:calc.mode !== 'content' && Boolean(calc.doseUnit?.endsWith('/día')), disabled:calc.mode === 'content', symbol:'clock', hint:calc.mode === 'content' ? 'No interviene en el cálculo de contenido medido; se habilita al volver a Cálculo por dosis.' : calc.doseUnit?.endsWith('/día') ? 'Ejemplo ficticio: 8 significa cada 8 horas. Obligatorio para repartir una dosis diaria.' : 'Ejemplo ficticio: 8 significa cada 8 horas, no 8 veces al día. Opcional para obtener cantidad diaria y total.'},
+    durationDays: {disabled:calc.mode === 'content', symbol:'calendar', hint:calc.mode === 'content' ? 'No interviene en el cálculo de contenido medido; se habilita al volver a Cálculo por dosis.' : 'Ejemplo ficticio: 2 significa dos días. Opcional; el total requiere duración e intervalo.'},
+    measuredQuantity: {required:true, symbol:'scale', hint:`Ejemplo ficticio: 3 ${calc.presentation?.type === 'percent' && calc.presentation?.percentKind !== 'pp' ? 'mL' : 'g'} de preparación medida. No es una dosis sistémica.`},
+    search: {symbol:'book', hint:'Ej.: una parte del nombre o principio activo que registró.'},
+    speciesFilter: {symbol:'paw', hint:'Ej.: Felino para ver medicamentos con pautas de esa especie.'},
+    'ed-name': {required:true, symbol:'pill', hint:'Ej.: Producto de práctica (nombre ficticio). Nombre que identificará el registro.'},
+    'ed-active': {required:true, symbol:'pill', hint:'Ej.: Sustancia ficticia X. Registre un único principio activo.'},
+    'ed-reference': {symbol:'book', hint:'Ej.: título, autor y edición de la referencia que usted consultó. Opcional.'},
+    'ed-reviewDate': {symbol:'calendar', hint:'Ej.: seleccione 15/01/2026 si esa fue su fecha de revisión. Opcional.'},
+    'ed-notes': {hint:'Ej.: información de conservación que usted haya verificado. Opcional.'},
+    'ed-precautions': {hint:'Ej.: una precaución de su referencia verificada. La app no añade precauciones clínicas.'},
+    theme: {symbol:'settings', hint:'Ej.: Oscuro para cambiar la apariencia; Claro para volver al fondo claro.'},
+    'import-file': {required:true, symbol:'upload', hint:'Ej.: un archivo VetDose-respaldo-2026-01-15.json. Seleccione JSON de VetDose, hasta 5 MB.'},
+    'import-mode': {required:true, symbol:'upload', hint:'Ej.: Fusionar para conservar lo actual; Reemplazar sustituye toda la biblioteca y pide confirmación.'},
+  };
+  if (guides[id]) return {required:false, symbol:'text', ...guides[id]};
+  const presentation = id.match(/^(cp|p\d+)-(\w+)$/);
+  if (presentation) {
+    const prefix=presentation[1], key=presentation[2];
+    const p=prefix === 'cp' ? calc.presentation || {} : draft.presentations?.[Number(prefix.slice(1))] || {};
+    const unit=p.unit || 'mg';
+    const amountContext={tablet:'por tableta', capsule:'por cápsula', sachet:'por sobre', powder:'por 1 g de polvo', topical:'por 1 g de preparación', vial:'en el vial completo'}[p.type] || 'en el volumen de referencia indicado';
+    const settings={
+      name:{required:true,symbol:'flask',hint:'Ej.: Presentación de práctica (nombre ficticio). Identifica este producto y su concentración.'},
+      type:{required:true,symbol:'flask',hint:'Ej.: Solución / suspensión si esa es la forma del producto; los campos se adaptan a su elección.'},
+      amount:{required:true,symbol:'target',hint:p.type === 'percent' ? 'Ejemplo ficticio: 1,2 significa 1,2 % del tipo seleccionado. Use el porcentaje real de la etiqueta.' : `Ejemplo ficticio: 12 ${unit} ${amountContext}; escriba solo 12. Use el contenido real de la etiqueta.`},
+      unit:{required:true,symbol:'ruler',hint:'Ej.: mg si el contenido está en miligramos; µg si está en microgramos. UI solo en formas admitidas.'},
+      percentKind:{required:true,symbol:'ruler',hint:'Ej.: p/v = g/100 mL; p/p = g/100 g; v/v = mL/100 mL. Copie el tipo de la etiqueta.'},
+      perVolume:{required:true,symbol:'drop',hint:'Ej.: si la etiqueta expresa el contenido por 5 mL, escriba 5. Para contenido por 1 mL, escriba 1.'},
+      finalVolume:{required:true,symbol:'drop',hint:'Ejemplo ficticio: 12 mL de volumen FINAL tras reconstituir. Use el volumen final real, no el diluyente añadido.'},
+      diluentVolume:{symbol:'drop',hint:'Ejemplo ficticio: 10 mL añadidos. Opcional e informativo; no sustituye al volumen final.'},
+      dropFactor:{symbol:'drop',hint:'Ejemplo ficticio: 20 gotas/mL. Use el factor real del producto y dispositivo. Solo se necesita para mostrar gotas; los mL pueden calcularse sin él.'},
+    };
+    return {required:false,symbol:'text',...settings[key]};
+  }
+  const regimen=id.match(/^r(\d+)-(\w+)$/);
+  if (regimen) {
+    const r=draft.regimens?.[Number(regimen[1])] || {}, key=regimen[2];
+    const range=present(r.min) || present(r.max);
+    const settings={
+      indication:{required:true,hint:'Ej.: Práctica de cálculo (texto ficticio). Identifica para qué registró esta pauta.'},
+      species:{required:true,symbol:'paw',hint:'Ej.: Canino si la pauta corresponde a perros. Ambas especies solo si usted lo ha validado.'},
+      dose:{required:!range,symbol:'target',hint:'Ejemplo ficticio: 6. Registre una dosis puntual o un intervalo mínimo–máximo completo; sin valor clínico.'},
+      doseUnit:{required:true,symbol:'ruler',hint:'Ej.: mg/kg/dosis para cada administración, o mg/kg/día para el total diario.'},
+      min:{required:range,symbol:'target',hint:'Ejemplo ficticio: 2 como límite inferior. Si introduce un límite, ambos extremos son obligatorios.'},
+      max:{required:range,symbol:'target',hint:'Ejemplo ficticio: 8 como límite superior. La app no seleccionará un punto medio.'},
+      route:{hint:'Ej.: la vía que usted haya definido para esta pauta. Opcional para guardar.'},
+      intervalHours:{required:Boolean(r.doseUnit?.endsWith('/día')),symbol:'clock',hint:r.doseUnit?.endsWith('/día') ? 'Ejemplo ficticio: 8 horas entre administraciones. Obligatorio en una pauta diaria.' : 'Ejemplo ficticio: 8 horas entre administraciones. Opcional para una pauta por dosis.'},
+      durationDays:{symbol:'calendar',hint:'Ejemplo ficticio: 2 días de duración. Opcional.'},
+    };
+    return {required:false,symbol:'text',...settings[key]};
+  }
+  return {required:false,symbol:'info',hint:'Introduzca el dato que corresponda a su registro.'};
+}
+
 
 const $ = id => document.getElementById(id);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -276,9 +376,29 @@ let page = 'calculator', draft = null, editingId = null, result = null, resultEr
 let search = '', speciesFilter = 'all';
 const blankPresentation = () => ({type:'liquid', amount:'', unit:'mg', perVolume:'', finalVolume:'', diluentVolume:'', dropFactor:'', percentKind:'pv', fractions:[]});
 let calc = {species:'canine', weight:'', patient:'', drugId:'', regimenId:'', presentationId:'', name:'', active:'', indication:'', dose:'', doseUnit:DOSE_UNITS[0], route:'', intervalHours:'', durationDays:'', mode:'dose', measuredQuantity:'', presentation:blankPresentation()};
-const field = (id, label, value = '', attrs = '') => `<label>${label}<input id="${id}" value="${esc(value)}" ${attrs}></label>`;
-const num = (id, label, value = '', hint = '') => `<label>${label}<input id="${id}" value="${esc(value)}" inputmode="decimal" autocomplete="off">${hint ? `<span class="hint">${hint}</span>` : ''}</label>`;
-const select = (id, label, options) => `<label>${label}<select id="${id}">${options}</select></label>`;
+function guidedField(id, label, element, extraHint='') {
+  const guide=fieldGuide(id,{calc,draft:draft||{}});
+  const required=guide.required ? 'required aria-required="true"' : 'aria-required="false"';
+  const control=element.replace('FIELD_ATTRIBUTES',`id="${id}" ${required} ${guide.disabled?'disabled':''} aria-labelledby="${id}-label" aria-describedby="${id}-hint"`);
+  return `<div class="form-field" data-field="${id}" data-extra-hint="${esc(extraHint)}"><label id="${id}-label" for="${id}"><span class="field-title">${icon(guide.symbol)}<span>${esc(label)}</span><span class="required-marker" aria-hidden="true" ${guide.required?'':'hidden'}>*</span><span class="sr-only required-word" ${guide.required?'':'hidden'}> (obligatorio)</span></span></label>${control}<span class="hint field-example" id="${id}-hint">${esc(guide.hint)}${extraHint ? ` ${esc(extraHint)}` : ''}</span></div>`;
+}
+const field = (id, label, value = '', attrs = '') => guidedField(id,label,`<input FIELD_ATTRIBUTES value="${esc(value)}" ${attrs}>`);
+const num = (id, label, value = '', hint = '') => guidedField(id,label,`<input FIELD_ATTRIBUTES value="${esc(value)}" inputmode="decimal" autocomplete="off">`,hint);
+const select = (id, label, options) => guidedField(id,label,`<select FIELD_ATTRIBUTES>${options}</select>`);
+const textarea = (id,label,value='') => guidedField(id,label,`<textarea FIELD_ATTRIBUTES>${esc(value)}</textarea>`);
+function formLegend(context) {
+  return `<div class="form-legend" role="note">${icon('info')}<div><strong><span class="required-marker">*</span> Dato obligatorio ${context}.</strong> Los demás campos son opcionales.<br><span>Los ejemplos son ficticios y muestran el formato; no son pautas ni concentraciones recomendadas.</span></div></div>`;
+}
+function refreshFieldGuidance() {
+  for(const wrapper of document.querySelectorAll('.form-field[data-field]')) {
+    const id=wrapper.dataset.field, guide=fieldGuide(id,{calc,draft:draft||{}}), control=$(id);
+    control.required=Boolean(guide.required); control.setAttribute('aria-required',String(Boolean(guide.required)));
+    control.disabled=Boolean(guide.disabled);
+    wrapper.querySelector('.required-marker').hidden=!guide.required;
+    wrapper.querySelector('.required-word').hidden=!guide.required;
+    $(`${id}-hint`).textContent=guide.hint+(wrapper.dataset.extraHint?` ${wrapper.dataset.extraHint}`:'');
+  }
+}
 function presentationFields(p, prefix) {
   const isPercent = p.type === 'percent';
   const liquid = ['liquid','injection','drops'].includes(p.type);
@@ -288,10 +408,10 @@ function presentationFields(p, prefix) {
     <div class="full">${select(`${prefix}-type`, 'Forma farmacéutica', Object.entries(FORMS).map(([k,v]) => option(k,v,p.type)).join(''))}</div>
     ${num(`${prefix}-amount`, isPercent ? 'Concentración (%)' : contentLabel, p.amount)}
     ${isPercent ? select(`${prefix}-percentKind`, 'Tipo de porcentaje', [['pv','% peso/volumen (g/100 mL)'],['pp','% peso/peso (g/100 g)'],['vv','% volumen/volumen (mL/100 mL)']].map(([k,v]) => option(k,v,p.percentKind)).join('')) : select(`${prefix}-unit`, 'Unidad del contenido', unitTypes.map(u => option(u,u,p.unit)).join(''))}
-    ${liquid ? num(`${prefix}-perVolume`, 'Por volumen de referencia (mL)',p.perVolume,'Ej.: para mg/5 mL, escriba 5. No se presupone 1 mL.') : ''}
-    ${p.type === 'vial' ? num(`${prefix}-finalVolume`,'Volumen FINAL reconstituido (mL)',p.finalVolume) + num(`${prefix}-diluentVolume`,'Diluyente añadido (mL, opcional)',p.diluentVolume,'Solo informativo. No sustituye al volumen final.') : ''}
+    ${liquid ? num(`${prefix}-perVolume`, 'Por volumen de referencia (mL)',p.perVolume) : ''}
+    ${p.type === 'vial' ? num(`${prefix}-finalVolume`,'Volumen FINAL reconstituido (mL)',p.finalVolume) + num(`${prefix}-diluentVolume`,'Diluyente añadido (mL, opcional)',p.diluentVolume) : ''}
     ${p.type === 'drops' ? num(`${prefix}-dropFactor`,'Factor del dispositivo (gotas/mL, opcional)',p.dropFactor) : ''}
-    ${p.type === 'tablet' ? `<div class="full"><span class="field">Fraccionamiento autorizado por usted</span><div class="checkrow" style="margin-top:12px">${[[.5,'½'],[.25,'¼'],[.125,'⅛'],[1/3,'⅓']].map(([v,l]) => `<label><input type="checkbox" name="${prefix}-fractions" value="${v}" ${(p.fractions || []).includes(v) ? 'checked' : ''}>${l}</label>`).join('')}</div><span class="hint">Sin marcar: no se asume que la tableta sea divisible. Esta información no valida su uso clínico.</span></div>` : ''}
+    ${p.type === 'tablet' ? `<fieldset class="fractions-field full"><legend class="field">${icon('pill')} Fraccionamiento autorizado por usted (opcional)</legend><div class="checkrow" style="margin-top:12px">${[[.5,'½'],[.25,'¼'],[.125,'⅛'],[1/3,'⅓']].map(([v,l]) => `<label><input type="checkbox" name="${prefix}-fractions" value="${v}" aria-describedby="${prefix}-fractions-hint" ${(p.fractions || []).includes(v) ? 'checked' : ''}>${l}</label>`).join('')}</div><span class="hint" id="${prefix}-fractions-hint">Ej.: marque ½ solo si confirmó que el producto permite esa división. Sin marcar no se asume divisibilidad; una coincidencia matemática no valida su uso clínico.</span></fieldset>` : ''}
     ${isPercent ? '<div class="notice info full">p/v: g por 100 mL. p/p: g por 100 g. v/v solo permite contenido en volumen; no se convierte a masa sin densidad.</div>' : ''}
   </div>`;
 }
@@ -315,17 +435,17 @@ function resultMarkup() {
   const detail = (key,value) => `<div><dt>${key}</dt><dd>${esc(value)}</dd></div>`;
   const pair = r.mode === 'content' ? [r.active,r.activeUnit] : [r.quantity,r.outputUnit];
   return `<div class="result-main"><div class="result-label">${r.mode === 'content' ? 'Contenido en cantidad medida' : 'Cantidad por administración'}</div><div class="result-number">${esc(display(pair[0]))} <small>${esc(pair[1])}</small></div>${r.fraction ? `<div class="result-fraction">Equivalencia matemática: ${esc(r.fraction)} ${esc(r.outputUnit)}</div>` : ''}</div>
-    <dl class="details">${detail('Paciente', `${speciesName(calc.species)} · ${calc.weight} kg${calc.patient ? ` · ${calc.patient}` : ''}`)}${detail('Principio activo',calc.active || 'No especificado')}${detail('Medicamento',calc.name || 'Entrada manual')}${detail('Indicación / pauta',calc.indication || 'No especificada')}${detail('Vía',calc.route || 'No especificada')}${detail('Dosis introducida',r.mode === 'content' ? 'Contenido medido, sin dosis' : `${calc.dose} ${calc.doseUnit}`)}${detail('Presentación',FORMS[calc.presentation.type])}${r.mode === 'dose' ? detail('Principio activo / administración',`${display(r.active)} ${r.activeUnit}`) : detail('Cantidad medida',`${display(r.quantity)} ${r.outputUnit}`)}${r.dailyActive !== null && r.dailyActive !== undefined ? detail('Principio activo / día',`${display(r.dailyActive)} ${r.activeUnit}`) : ''}${detail('Frecuencia',calc.intervalHours ? `Cada ${calc.intervalHours} h` : 'No especificada')}${detail('Duración',calc.durationDays ? `${calc.durationDays} días` : 'No especificada')}${r.total !== null && r.total !== undefined ? detail('Total del tratamiento',`${display(r.total)} ${r.outputUnit} · ${r.count} administraciones`) : ''}${r.drops !== null && r.drops !== undefined ? detail('Equivalencia en gotas',`${display(r.drops)} gotas`) : ''}</dl>
+    <dl class="details">${detail('Paciente', `${speciesName(calc.species)} · ${calc.weight} kg${calc.patient ? ` · ${calc.patient}` : ''}`)}${detail('Principio activo',calc.active || 'No especificado')}${detail('Medicamento',calc.name || 'Entrada manual')}${detail('Indicación / pauta',calc.indication || 'No especificada')}${detail('Vía',calc.route || 'No especificada')}${detail('Dosis introducida',r.mode === 'content' ? 'Contenido medido, sin dosis' : `${calc.dose} ${calc.doseUnit}`)}${detail('Presentación',FORMS[calc.presentation.type])}${r.mode === 'dose' ? detail('Principio activo / administración',`${display(r.active)} ${r.activeUnit}`) : detail('Cantidad medida',`${display(r.quantity)} ${r.outputUnit}`)}${r.dailyActive !== null && r.dailyActive !== undefined ? detail('Principio activo / día',`${display(r.dailyActive)} ${r.activeUnit}`) : ''}${detail('Frecuencia',r.mode==='content' ? 'No aplica: contenido medido' : calc.intervalHours ? `Cada ${calc.intervalHours} h` : 'No especificada')}${detail('Duración',r.mode==='content' ? 'No aplica: contenido medido' : calc.durationDays ? `${calc.durationDays} días` : 'No especificada')}${r.total !== null && r.total !== undefined ? detail('Total del tratamiento',`${display(r.total)} ${r.outputUnit} · ${r.count} administraciones`) : ''}${r.drops !== null && r.drops !== undefined ? detail('Equivalencia en gotas',`${display(r.drops)} gotas`) : ''}</dl>
     <div class="formula"><strong>Procedimiento matemático</strong>${r.steps.map(s => `<div>${esc(s)}</div>`).join('')}<span class="hint">Visualización: hasta 12 cifras significativas. Sin redondeo a una cantidad administrable.</span></div>
     <ul class="warnings">${r.warnings.map(w => `<li>${esc(w)}</li>`).join('')}</ul>
-    <button data-action="print">Imprimir resultado</button>`;
+    <button data-action="print">${icon('download')} Imprimir resultado</button>`;
 }
 function calcPage() {
   const d = currentDrug(), regimen = currentRegimen();
-  return `<div class="page-heading"><h1>Calculadora de dosis</h1><p>Usted define la pauta. VetDose hace las cuentas.</p></div>
+  return `<div class="page-heading"><h1>Calculadora de dosis</h1><p>Usted define la pauta. VetDose hace las cuentas.</p></div>${formLegend('para este cálculo; cambia según la operación y la presentación')}
   <div class="workspace"><div class="stack calculator-input">
-    <section class="card"><h2><span class="step">01</span> Paciente</h2><div class="grid"><div class="full"><span class="field">Especie</span><div class="species" style="margin-top:8px"><button data-action="species" data-value="canine" class="${calc.species === 'canine' ? 'selected' : ''}" aria-pressed="${calc.species === 'canine'}">Canino</button><button data-action="species" data-value="feline" class="${calc.species === 'feline' ? 'selected' : ''}" aria-pressed="${calc.species === 'feline'}">Felino</button></div></div>${num('weight','Peso corporal (kg)',calc.weight)}${field('patient','Identificador (opcional)',calc.patient,'autocomplete="off"')}<span class="hint full">El identificador solo vive en esta sesión. No se guarda en la biblioteca ni en los respaldos.</span></div></section>
-    <section class="card"><h2><span class="step">02</span> Medicamento y pauta</h2><div class="grid">
+    <section class="card"><h2><span class="step">01</span>${icon('paw')} Paciente</h2><div class="grid"><fieldset class="species-field full"><legend class="field">Especie <span class="required-marker" aria-hidden="true">*</span><span class="sr-only"> (obligatorio)</span></legend><div class="species" style="margin-top:8px"><button data-action="species" data-value="canine" class="${calc.species === 'canine' ? 'selected' : ''}" aria-pressed="${calc.species === 'canine'}">Canino</button><button data-action="species" data-value="feline" class="${calc.species === 'feline' ? 'selected' : ''}" aria-pressed="${calc.species === 'feline'}">Felino</button></div><span class="hint">Ej.: Canino si el paciente es un perro. Confirme la especie seleccionada.</span></fieldset>${num('weight','Peso corporal (kg)',calc.weight)}${field('patient','Identificador (opcional)',calc.patient,'autocomplete="off"')}</div></section>
+    <section class="card"><h2><span class="step">02</span>${icon('pill')} Medicamento y pauta</h2><div class="grid">
     <div class="full">${select('drugId','Origen del medicamento',option('','Entrada manual · sin guardar',calc.drugId)+library.drugs.map(x => option(x.id,x.name,calc.drugId)).join(''))}</div>
     ${field('name','Nombre del medicamento',calc.name)}${field('active','Principio activo único',calc.active)}
     ${d ? `<div class="full">${select('regimenId','Pauta registrada',option('','Pauta manual',calc.regimenId)+d.regimens.map(r => `<option value="${esc(r.id)}" ${r.id===calc.regimenId?'selected':''} ${r.species!=='both' && r.species!==calc.species?'disabled':''}>${esc(`${r.indication} · ${speciesName(r.species)}`)}</option>`).join(''))}</div>` : ''}
@@ -334,11 +454,11 @@ function calcPage() {
     ${regimen?.min != null ? `<div class="notice info full">Intervalo registrado: ${esc(regimen.min)}–${esc(regimen.max)} ${esc(regimen.doseUnit)}. Seleccione expresamente una dosis; no se elige un punto medio.</div>` : ''}
     ${field('route','Vía de administración',calc.route)}${num('intervalHours','Administrar cada (horas)',calc.intervalHours)}${num('durationDays','Duración (días, opcional)',calc.durationDays)}
     </div>${d?.precautions ? `<div class="notice range-note">Precauciones registradas: ${esc(d.precautions)}</div>` : ''}<span class="hint">Frecuencia y duración son introducidas por usted. El cálculo no valida una pauta terapéutica.</span></section>
-    <section class="card"><h2><span class="step">03</span> Presentación farmacéutica</h2>
+    <section class="card"><h2><span class="step">03</span>${icon('flask')} Presentación farmacéutica</h2>
     ${d ? select('presentationId','Presentación registrada',option('','Presentación manual',calc.presentationId)+d.presentations.map(p=>option(p.id,p.name,calc.presentationId)).join(''))+'<div style="height:17px"></div>' : ''}
-    ${presentationFields(calc.presentation,'cp')}<button class="primary calculate" data-action="calculate">Calcular cantidad <span aria-hidden="true">→</span></button><span class="hint">Los cambios de esta pantalla son temporales: no modifican la biblioteca.</span></section>
-    </div><aside class="card result-card"><h2>Resultado <span class="badge">CÁLCULO MATEMÁTICO</span></h2><div id="result" aria-live="polite">${resultMarkup()}</div></aside></div>
-    <p class="footnote">Sin pautas precargadas · Sin conversiones entre UI y masa · Solo formulaciones con un principio activo<br>La exactitud matemática no garantiza la idoneidad clínica de una administración.</p>`;
+    ${presentationFields(calc.presentation,'cp')}<button class="primary calculate" data-action="calculate">${icon('calculator')} Calcular cantidad <span aria-hidden="true">→</span></button><span class="hint">Los cambios de esta pantalla son temporales: no modifican la biblioteca.</span></section>
+    </div><aside class="card result-card"><h2><span>${icon('calculator')} Resultado</span> <span class="badge">CÁLCULO MATEMÁTICO</span></h2><div id="result" aria-live="polite">${resultMarkup()}</div></aside></div>
+    <p class="footnote">VetDose 1.1 · Sin pautas precargadas · Sin conversiones entre UI y masa · Un solo principio activo<br>La exactitud matemática no garantiza la idoneidad clínica de una administración.</p>`;
 }
 function libraryPage() {
   return `<div class="page-heading"><h1>Su biblioteca</h1><p>Medicamentos, pautas y presentaciones registrados por usted.</p></div><div class="library-toolbar">${field('search','Buscar por nombre o principio activo',search,'type="search"')}${select('speciesFilter','Especie',option('all','Todas',speciesFilter)+['canine','feline'].map(s=>option(s,speciesName(s),speciesFilter)).join(''))}<button class="primary" data-action="new-drug">+ Nuevo medicamento</button></div><div id="drug-list" class="drug-list">${drugList()}</div>`;
@@ -349,9 +469,9 @@ function drugList() {
 }
 function editorPage() {
   return `<div class="page-heading editor-header"><div><h1>${editingId ? 'Editar medicamento' : 'Nuevo medicamento'}</h1><p>Los valores deben proceder de sus propias referencias.</p></div><button data-action="cancel-edit">Cancelar</button></div>
-  <div class="stack"><section class="card"><h2>Identificación</h2><div class="grid">${field('ed-name','Nombre del medicamento',draft.name)}${field('ed-active','Principio activo único',draft.active)}${field('ed-reference','Referencia bibliográfica (opcional)',draft.reference)}${field('ed-reviewDate','Fecha de última revisión',draft.reviewDate,'type="date"')}<label class="full">Observaciones<textarea id="ed-notes">${esc(draft.notes)}</textarea></label><label class="full">Precauciones y contraindicaciones<textarea id="ed-precautions">${esc(draft.precautions)}</textarea></label></div><span class="hint">Combinaciones de principios activos: capacidad futura. No registre una combinación como si fuera un solo principio activo.</span></section>
-  <section class="card"><h2>Pautas posológicas</h2>${draft.regimens.map((r,i)=>`<div class="entry"><h3>Pauta ${i+1}</h3><div class="grid">${field(`r${i}-indication`,'Indicación',r.indication)}${select(`r${i}-species`,'Especie', ['canine','feline','both'].map(s=>option(s,speciesName(s),r.species)).join(''))}${num(`r${i}-dose`,'Dosis puntual (vacía si registra intervalo)',r.dose)}${select(`r${i}-doseUnit`,'Unidad de dosis',DOSE_UNITS.map(u=>option(u,u,r.doseUnit)).join(''))}${num(`r${i}-min`,'Dosis mínima (opcional)',r.min)}${num(`r${i}-max`,'Dosis máxima (opcional)',r.max)}${field(`r${i}-route`,'Vía',r.route)}${num(`r${i}-intervalHours`,'Intervalo (horas)',r.intervalHours)}${num(`r${i}-durationDays`,'Duración (días, opcional)',r.durationDays)}</div><button class="remove danger" data-action="remove-regimen" data-index="${i}">Quitar pauta</button></div>`).join('')}<button data-action="add-regimen">+ Agregar pauta</button></section>
-  <section class="card"><h2>Presentaciones</h2>${draft.presentations.map((p,i)=>`<div class="entry"><h3>Presentación ${i+1}</h3>${field(`p${i}-name`,'Nombre comercial / identificación',p.name)}<div style="height:17px"></div>${presentationFields(p,`p${i}`)}<button class="remove danger" data-action="remove-presentation" data-index="${i}">Quitar presentación</button></div>`).join('')}<button data-action="add-presentation">+ Agregar presentación</button></section><div id="editor-error" class="notice error" role="alert"></div><div><button class="primary" data-action="save-drug">Guardar medicamento</button></div></div>`;
+  ${formLegend('para guardar; cada pauta admite dosis puntual o intervalo mínimo–máximo completo')}<div class="stack"><section class="card"><h2>${icon('pill')} Identificación</h2><div class="grid">${field('ed-name','Nombre del medicamento',draft.name)}${field('ed-active','Principio activo único',draft.active)}${field('ed-reference','Referencia bibliográfica (opcional)',draft.reference)}${field('ed-reviewDate','Fecha de última revisión',draft.reviewDate,'type="date"')}<div class="full">${textarea('ed-notes','Observaciones',draft.notes)}</div><div class="full">${textarea('ed-precautions','Precauciones y contraindicaciones',draft.precautions)}</div></div><span class="hint">Combinaciones de principios activos: capacidad futura. No registre una combinación como si fuera un solo principio activo.</span></section>
+  <section class="card"><h2>Pautas posológicas</h2>${draft.regimens.map((r,i)=>`<div class="entry"><h3>Pauta ${i+1}</h3><div class="grid">${field(`r${i}-indication`,'Indicación',r.indication)}${select(`r${i}-species`,'Especie', ['canine','feline','both'].map(s=>option(s,speciesName(s),r.species)).join(''))}${num(`r${i}-dose`,'Dosis puntual',r.dose)}${select(`r${i}-doseUnit`,'Unidad de dosis',DOSE_UNITS.map(u=>option(u,u,r.doseUnit)).join(''))}${num(`r${i}-min`,'Dosis mínima del intervalo',r.min)}${num(`r${i}-max`,'Dosis máxima del intervalo',r.max)}${field(`r${i}-route`,'Vía',r.route)}${num(`r${i}-intervalHours`,'Intervalo (horas)',r.intervalHours)}${num(`r${i}-durationDays`,'Duración (días, opcional)',r.durationDays)}</div><button class="remove danger" data-action="remove-regimen" data-index="${i}">Quitar pauta</button></div>`).join('')}<button data-action="add-regimen">+ Agregar pauta</button></section>
+  <section class="card"><h2>${icon('flask')} Presentaciones</h2>${draft.presentations.map((p,i)=>`<div class="entry"><h3>Presentación ${i+1}</h3>${field(`p${i}-name`,'Nombre comercial / identificación',p.name)}<div style="height:17px"></div>${presentationFields(p,`p${i}`)}<button class="remove danger" data-action="remove-presentation" data-index="${i}">Quitar presentación</button></div>`).join('')}<button data-action="add-presentation">+ Agregar presentación</button></section><div id="editor-error" class="notice error" role="alert"></div><div><button class="primary" data-action="save-drug">${icon('save')} Guardar medicamento</button></div></div>`;
 }
 function readDraft() {
   if (!draft) return;
@@ -362,12 +482,12 @@ function readDraft() {
 function settingsPage() {
   return `<div class="page-heading"><h1>Configuración y respaldos</h1><p>Sus datos permanecen en este dispositivo. Usted controla sus copias.</p></div><div class="settings">
   <section class="card"><h2>Apariencia</h2>${select('theme','Tema',option('light','Claro',document.documentElement.dataset.theme)+option('dark','Oscuro',document.documentElement.dataset.theme))}</section>
-  <section class="card"><h2>Respaldo de biblioteca</h2><p>La exportación JSON incluye medicamentos, pautas y presentaciones. No incluye identificadores de pacientes ni cálculos. No existe sincronización automática entre dispositivos.</p><p><strong>${library.drugs.length} medicamentos en esta sesión.</strong></p><div class="actions"><button class="primary" data-action="export">Exportar biblioteca JSON</button>${corrupt ? '<button data-action="recover">Descargar datos originales para recuperación</button>' : ''}</div><p>Guarde copias periódicas y antes de cambiar de navegador, borrar datos o trasladar la biblioteca.</p></section>
-  <section class="card"><h2>Importar biblioteca</h2><p>Se valida todo el archivo antes de modificar los datos. La fusión omite copias idénticas y bloquea conflictos de identificadores o posibles duplicados.</p><label>Archivo de respaldo JSON<input id="import-file" type="file" accept=".json,application/json"></label>${select('import-mode','Modo de importación',option('merge','Fusionar con biblioteca actual','merge')+option('replace','Reemplazar biblioteca actual','merge'))}<div class="actions"><button data-action="import">Validar e importar</button></div><div id="import-status" class="notice" role="status" style="margin-top:15px"></div></section>
-  <section class="card"><h2>Almacenamiento y portabilidad</h2><p>${esc(persistence || 'Almacenamiento local disponible en esta sesión. Esto no garantiza retención indefinida.')}</p><p>Su biblioteca es privada de este navegador: no se comparte con otros visitantes ni se sincroniza entre dispositivos. El sitio web distribuye la aplicación; no recibe sus pautas ni los datos del paciente.</p><p>El navegador puede eliminar datos o aislarlos por dirección y perfil. En modo privado, bajo file:// y especialmente en iOS, la persistencia puede no funcionar. Exporte JSON antes de cerrar y mantenga una copia externa.</p><p>En el teléfono, abra el enlace web en Safari o Chrome. Si llegó por WhatsApp, use «Abrir en el navegador» para mantener sus datos en un navegador habitual. No necesita descargar un archivo para usar el sitio. La versión web requiere conexión para abrirse o recargarse; después de cargar, los cálculos no dependen de la red. El HTML portable sigue disponible para uso local.</p></section></div>`;
+  <section class="card"><h2>${icon('download')} Respaldo de biblioteca</h2><p>La exportación JSON incluye medicamentos, pautas y presentaciones. No incluye identificadores de pacientes ni cálculos. No existe sincronización automática entre dispositivos.</p><p><strong>${library.drugs.length} medicamentos en esta sesión.</strong></p><div class="actions"><button class="primary" data-action="export">${icon('download')} Exportar biblioteca JSON</button>${corrupt ? '<button data-action="recover">Descargar datos originales para recuperación</button>' : ''}</div><p>Guarde copias periódicas y antes de cambiar de navegador, borrar datos o trasladar la biblioteca.</p></section>
+  <section class="card"><h2>${icon('upload')} Importar biblioteca</h2><p>Se valida todo el archivo antes de modificar los datos. La fusión omite copias idénticas y bloquea conflictos de identificadores o posibles duplicados.</p>${formLegend('para importar')}${field('import-file','Archivo de respaldo JSON','','type="file" accept=".json,application/json"')}${select('import-mode','Modo de importación',option('merge','Fusionar con biblioteca actual','merge')+option('replace','Reemplazar biblioteca actual','merge'))}<div class="actions"><button data-action="import">${icon('upload')} Validar e importar</button></div><div id="import-status" class="notice" role="status" style="margin-top:15px"></div></section>
+  <section class="card"><h2>Almacenamiento y portabilidad</h2><p>${esc(persistence || 'Almacenamiento local disponible en esta sesión. Esto no garantiza retención indefinida.')}</p><p>Su biblioteca es privada de este navegador: no se comparte con otros visitantes ni se sincroniza entre dispositivos. El sitio web distribuye la aplicación; no recibe sus pautas ni los datos del paciente.</p><p>El navegador puede eliminar datos o aislarlos por dirección y perfil. En modo privado, bajo file:// y especialmente en iOS, la persistencia puede no funcionar. Exporte JSON antes de cerrar y mantenga una copia externa.</p><p>En el teléfono, abra el enlace web en Safari o Chrome. Si llegó por WhatsApp, use «Abrir en el navegador» para mantener sus datos en un navegador habitual. No necesita descargar un archivo para usar el sitio. La versión web requiere conexión para abrirse o recargarse; después de cargar, los cálculos no dependen de la red. El HTML portable sigue disponible para uso local.</p></section><section class="card"><h2>${icon('book')} Guía de uso</h2><p>Manual PDF con capturas, explicación de los asteriscos, ejemplos ficticios y pasos para conservar su biblioteca.</p><a class="button-link" href="${document.querySelector('script[src="src/app.js"]')?'docs/':''}Guia-de-usuario-VetDose.pdf" download>${icon('download')} Descargar guía PDF</a></section></div>`;
 }
 function render() {
-  $('app').innerHTML = `<div class="shell"><aside class="sidebar"><div class="brand"><span class="brand-mark" aria-hidden="true">+</span><div>VetDose<small>PRECISIÓN EN CADA CÁLCULO</small></div></div><nav class="nav" aria-label="Navegación principal">${[['calculator','⌑','Calculadora'],['library','▤','Biblioteca'],['settings','⚙','Configuración']].map(([id,icon,label])=>`<button data-action="navigate" data-page="${id}" ${page===id || (page==='editor'&&id==='library')?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon}</span>${label}</button>`).join('')}</nav><div class="sidebar-bottom"><span class="local-dot"></span>Datos locales · Sin cuentas<br>VetDose 1.0<br>Herramienta de apoyo matemático</div></aside><main class="main"><div class="topline"><span>Espacio de trabajo veterinario</span><span class="badge">DATOS LOCALES · SIN CUENTAS</span></div>${persistence || location.protocol==='file:' ? `<div class="notice storage-banner" role="status">${esc(persistence || 'Archivo local: el almacenamiento puede variar entre navegadores. Exporte un respaldo JSON antes de cerrar.')}${corrupt ? ' Los datos originales se conservan; recupérelos en Configuración antes de reemplazarlos.' : ''}</div>` : ''}${page==='calculator'?calcPage():page==='library'?libraryPage():page==='editor'?editorPage():settingsPage()}</main></div><div id="toast" role="status" hidden></div>`;
+  $('app').innerHTML = `<div class="shell"><aside class="sidebar"><div class="brand"><span class="brand-mark" aria-hidden="true">+</span><div>VetDose <span class="version-tag">1.1</span><small>PRECISIÓN EN CADA CÁLCULO</small></div></div><nav class="nav" aria-label="Navegación principal">${[['calculator','calculator','Calculadora'],['library','book','Biblioteca'],['settings','settings','Configuración']].map(([id,symbol,label])=>`<button data-action="navigate" data-page="${id}" ${page===id || (page==='editor'&&id==='library')?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon(symbol)}</span>${label}</button>`).join('')}</nav><div class="sidebar-bottom"><span class="local-dot"></span>Datos locales · Sin cuentas<br>VetDose 1.1<br>Herramienta de apoyo matemático</div></aside><main class="main"><div class="topline"><span>Espacio de trabajo veterinario</span><span class="badge">DATOS LOCALES · SIN CUENTAS</span></div>${persistence || location.protocol==='file:' ? `<div class="notice storage-banner" role="status">${esc(persistence || 'Archivo local: el almacenamiento puede variar entre navegadores. Exporte un respaldo JSON antes de cerrar.')}${corrupt ? ' Los datos originales se conservan; recupérelos en Configuración antes de reemplazarlos.' : ''}</div>` : ''}${page==='calculator'?calcPage():page==='library'?libraryPage():page==='editor'?editorPage():settingsPage()}</main></div><div id="toast" role="status" hidden></div>`;
 }
 function pageStart() { window.scrollTo({top:0,behavior:'instant'}); }
 let toastTimer;
@@ -395,7 +515,8 @@ function applyDrug(id) {
   invalidate();
 }
 document.addEventListener('input',e=>{
-  if (page==='calculator') { readCalc(); invalidate(); }
+  if (page==='calculator') { readCalc(); invalidate(); refreshFieldGuidance(); }
+  if (page==='editor') { readDraft(); refreshFieldGuidance(); }
   if (e.target.id==='search') { search=e.target.value; $('drug-list').innerHTML=drugList(); }
 });
 document.addEventListener('change',e=>{
@@ -413,12 +534,13 @@ document.addEventListener('change',e=>{
     } else if (id==='cp-type') {
       calc.presentation={...blankPresentation(),type:e.target.value}; calc.presentationId='';
       calc.mode=e.target.value==='topical'?'content':'dose';
-    } else if (!['mode','cp-percentKind'].includes(id)) { invalidate(); return; }
+    } else if (!['mode','cp-percentKind'].includes(id)) { invalidate(); refreshFieldGuidance(); return; }
     invalidate(); render();
   } else if (page==='editor' && /^p\d+-type$/.test(id)) {
     readDraft(); const i=Number(id.match(/^p(\d+)/)[1]); const prior=draft.presentations[i];
     draft.presentations[i]={...blankPresentation(),id:prior.id,name:prior.name,type:e.target.value}; render();
-  } else if (id==='speciesFilter') { speciesFilter=e.target.value; $('drug-list').innerHTML=drugList(); }
+  } else if (page==='editor') { readDraft(); refreshFieldGuidance(); }
+  else if (id==='speciesFilter') { speciesFilter=e.target.value; $('drug-list').innerHTML=drugList(); }
   else if (id==='theme') { document.documentElement.dataset.theme=e.target.value; try { storage?.setItem('vetdose.theme',e.target.value); } catch { toast('Tema aplicado solo para esta sesión.'); } }
 });
 document.addEventListener('click',async e=>{
@@ -435,7 +557,7 @@ document.addEventListener('click',async e=>{
       try {
         if (!calc.active.trim()) throw new Error('Indique el principio activo único.');
         const r=currentRegimen();
-        if (r?.min!=null && (calc.doseUnit!==r.doseUnit || Number(String(calc.dose).replace(',','.'))<r.min || Number(String(calc.dose).replace(',','.'))>r.max)) throw new Error('Seleccione una dosis dentro del intervalo registrado y conserve su unidad. Para otra pauta seleccione «Pauta manual».');
+        if (calc.mode==='dose' && r?.min!=null && (calc.doseUnit!==r.doseUnit || Number(String(calc.dose).replace(',','.'))<r.min || Number(String(calc.dose).replace(',','.'))>r.max)) throw new Error('Seleccione una dosis dentro del intervalo registrado y conserve su unidad. Para otra pauta seleccione «Pauta manual».');
         result=calculate({...calc,regimenSpecies:r?.species});resultError='';
       } catch(err) {result=null;resultError=err.message;}
       $('result').innerHTML=resultMarkup();
