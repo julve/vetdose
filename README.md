@@ -2,7 +2,19 @@
 
 Calculadora matemática para uso veterinario en caninos y felinos. **No contiene, propone ni descarga dosis farmacológicas.** El profesional introduce cada pauta, concentración, frecuencia y parámetro. Un cálculo correcto no determina que una administración sea clínicamente adecuada.
 
-La aplicación funciona sin cuentas, suscripciones, CDN, fuentes remotas, telemetría, almacenamiento en la nube ni servicios externos. Todos los datos de biblioteca se mantienen en el navegador. El identificador de paciente solo permanece en memoria durante la sesión; no forma parte de los respaldos. El botón de impresión permite incluirlo expresamente en el resultado impreso.
+La calculadora funciona sin cuentas, suscripciones, CDN, fuentes remotas, telemetría ni almacenamiento de datos en la nube. Se puede distribuir como archivo local o como sitio estático en GitHub Pages. El alojamiento entrega el código de la aplicación; los cálculos y todos los datos de biblioteca permanecen en el navegador. El identificador de paciente solo permanece en memoria durante la sesión; no forma parte de los respaldos. El botón de impresión permite incluirlo expresamente en el resultado impreso.
+
+## Sitio web para teléfonos y computadoras
+
+El sitio listo para publicar está en `docs/index.html`. Consulte [la guía de GitHub Pages](docs/HOSTING.md) para activarlo. La dirección prevista, una vez publicado, es **https://julve.github.io/vetdose/**. Tener el código en GitHub no activa por sí solo el sitio.
+
+En el teléfono, abra ese enlace en **Safari o Chrome**. Puede compartir el enlace por WhatsApp; no hace falta enviar ni abrir un HTML adjunto. Si WhatsApp abre su visor interno, use **Abrir en el navegador**. Puede añadir el sitio a la pantalla de inicio como acceso directo desde su navegador.
+
+La interfaz de teléfono tiene campos de una columna, entradas de 16 px para evitar zoom al enfocar en iOS, controles táctiles de al menos 44 px, menú inferior con espacio para el área segura de la pantalla y desplazamiento automático al resultado. También admite orientación horizontal y modo oscuro. Se verificó en emulación táctil de Chromium; no se afirma haber probado dispositivos físicos ni Safari.
+
+**Cada visitante empieza con una biblioteca vacía y mantiene sus propios datos locales.** La biblioteca del autor no se publica ni se comparte automáticamente. Para trasladar la suya entre navegadores o dispositivos, exporte e importe JSON. GitHub sirve los archivos del sitio, pero la aplicación no envía dosis, bibliotecas ni identificadores a GitHub.
+
+Necesita conexión para abrir o recargar el sitio web. Una vez cargado, puede calcular sin conexión mientras permanezca abierto. No se implementa una PWA con caché para recarga offline; el archivo portable sigue disponible como alternativa.
 
 ## Empezar sin instalar herramientas
 
@@ -125,6 +137,9 @@ scripts/build.js       Empaquetado determinista sin dependencias
 scripts/serve.js       Servidor HTTP estático local
 tests/                 Casos matemáticos, biblioteca y flujos de navegador
 dist/VetDose.html      Distribución autocontenida generada
+docs/index.html        Mismo HTML, listo para GitHub Pages
+docs/.nojekyll         Publicación estática sin procesamiento Jekyll
+docs/HOSTING.md        Activación del sitio y actualización
 docs/VALIDACION.md      Evidencia y límites de las pruebas ejecutadas
 ```
 
@@ -144,4 +159,4 @@ La ruta de caché anterior corresponde al entorno cloud; en otra computadora pue
 
 El runner usa `--no-sandbox` para Chromium en este contenedor de pruebas aislado. Si su sistema permite el sandbox normal, ejecute con `BROWSER_SANDBOX=1`. Esta opción solo corresponde al navegador de pruebas y no altera la aplicación, TLS ni la validación de paquetes.
 
-No hay dependencias de terceros en el producto distribuido. El empaquetador incorpora únicamente los tres módulos y los estilos locales; los datos de pruebas no se incluyen. Después de modificar fuentes, regenere el archivo portable con `npm run build` y repita los controles correspondientes.
+No hay dependencias de terceros en el producto distribuido. El empaquetador incorpora únicamente los tres módulos y los estilos locales; los datos de pruebas no se incluyen. Después de modificar fuentes, regenere tanto el archivo portable como `docs/index.html` con `npm run build` y repita los controles correspondientes. El ZIP portable es un paquete de distribución; actualícelo también al publicar una nueva versión.

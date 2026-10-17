@@ -111,11 +111,12 @@ function settingsPage() {
   <section class="card"><h2>Apariencia</h2>${select('theme','Tema',option('light','Claro',document.documentElement.dataset.theme)+option('dark','Oscuro',document.documentElement.dataset.theme))}</section>
   <section class="card"><h2>Respaldo de biblioteca</h2><p>La exportación JSON incluye medicamentos, pautas y presentaciones. No incluye identificadores de pacientes ni cálculos. No existe sincronización automática entre dispositivos.</p><p><strong>${library.drugs.length} medicamentos en esta sesión.</strong></p><div class="actions"><button class="primary" data-action="export">Exportar biblioteca JSON</button>${corrupt ? '<button data-action="recover">Descargar datos originales para recuperación</button>' : ''}</div><p>Guarde copias periódicas y antes de cambiar de navegador, borrar datos o trasladar la biblioteca.</p></section>
   <section class="card"><h2>Importar biblioteca</h2><p>Se valida todo el archivo antes de modificar los datos. La fusión omite copias idénticas y bloquea conflictos de identificadores o posibles duplicados.</p><label>Archivo de respaldo JSON<input id="import-file" type="file" accept=".json,application/json"></label>${select('import-mode','Modo de importación',option('merge','Fusionar con biblioteca actual','merge')+option('replace','Reemplazar biblioteca actual','merge'))}<div class="actions"><button data-action="import">Validar e importar</button></div><div id="import-status" class="notice" role="status" style="margin-top:15px"></div></section>
-  <section class="card"><h2>Almacenamiento y portabilidad</h2><p>${esc(persistence || 'Almacenamiento local disponible en esta sesión. Esto no garantiza retención indefinida.')}</p><p>El navegador puede eliminar datos o aislarlos por dirección y perfil. En modo privado, bajo file:// y especialmente en iOS, la persistencia puede no funcionar. Exporte JSON antes de cerrar y mantenga una copia externa.</p><p>El HTML portable no necesita Internet. Si su teléfono no ejecuta archivos HTML locales, use la versión servida desde una computadora en su red local. La documentación explica esta alternativa. No utiliza una nube ni servidores externos.</p></section></div>`;
+  <section class="card"><h2>Almacenamiento y portabilidad</h2><p>${esc(persistence || 'Almacenamiento local disponible en esta sesión. Esto no garantiza retención indefinida.')}</p><p>Su biblioteca es privada de este navegador: no se comparte con otros visitantes ni se sincroniza entre dispositivos. El sitio web distribuye la aplicación; no recibe sus pautas ni los datos del paciente.</p><p>El navegador puede eliminar datos o aislarlos por dirección y perfil. En modo privado, bajo file:// y especialmente en iOS, la persistencia puede no funcionar. Exporte JSON antes de cerrar y mantenga una copia externa.</p><p>En el teléfono, abra el enlace web en Safari o Chrome. Si llegó por WhatsApp, use «Abrir en el navegador» para mantener sus datos en un navegador habitual. No necesita descargar un archivo para usar el sitio. La versión web requiere conexión para abrirse o recargarse; después de cargar, los cálculos no dependen de la red. El HTML portable sigue disponible para uso local.</p></section></div>`;
 }
 function render() {
-  $('app').innerHTML = `<div class="shell"><aside class="sidebar"><div class="brand"><span class="brand-mark" aria-hidden="true">+</span><div>VetDose<small>PRECISIÓN EN CADA CÁLCULO</small></div></div><nav class="nav" aria-label="Navegación principal">${[['calculator','⌑','Calculadora'],['library','▤','Biblioteca'],['settings','⚙','Configuración']].map(([id,icon,label])=>`<button data-action="navigate" data-page="${id}" ${page===id || (page==='editor'&&id==='library')?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon}</span>${label}</button>`).join('')}</nav><div class="sidebar-bottom"><span class="local-dot"></span>Datos locales · Sin cuentas<br>VetDose 1.0<br>Herramienta de apoyo matemático</div></aside><main class="main"><div class="topline"><span>Espacio de trabajo veterinario</span><span class="badge">SIN CONEXIÓN REQUERIDA</span></div>${persistence || location.protocol==='file:' ? `<div class="notice storage-banner" role="status">${esc(persistence || 'Archivo local: el almacenamiento puede variar entre navegadores. Exporte un respaldo JSON antes de cerrar.')}${corrupt ? ' Los datos originales se conservan; recupérelos en Configuración antes de reemplazarlos.' : ''}</div>` : ''}${page==='calculator'?calcPage():page==='library'?libraryPage():page==='editor'?editorPage():settingsPage()}</main></div><div id="toast" role="status" hidden></div>`;
+  $('app').innerHTML = `<div class="shell"><aside class="sidebar"><div class="brand"><span class="brand-mark" aria-hidden="true">+</span><div>VetDose<small>PRECISIÓN EN CADA CÁLCULO</small></div></div><nav class="nav" aria-label="Navegación principal">${[['calculator','⌑','Calculadora'],['library','▤','Biblioteca'],['settings','⚙','Configuración']].map(([id,icon,label])=>`<button data-action="navigate" data-page="${id}" ${page===id || (page==='editor'&&id==='library')?'aria-current="page"':''}><span class="nav-icon" aria-hidden="true">${icon}</span>${label}</button>`).join('')}</nav><div class="sidebar-bottom"><span class="local-dot"></span>Datos locales · Sin cuentas<br>VetDose 1.0<br>Herramienta de apoyo matemático</div></aside><main class="main"><div class="topline"><span>Espacio de trabajo veterinario</span><span class="badge">DATOS LOCALES · SIN CUENTAS</span></div>${persistence || location.protocol==='file:' ? `<div class="notice storage-banner" role="status">${esc(persistence || 'Archivo local: el almacenamiento puede variar entre navegadores. Exporte un respaldo JSON antes de cerrar.')}${corrupt ? ' Los datos originales se conservan; recupérelos en Configuración antes de reemplazarlos.' : ''}</div>` : ''}${page==='calculator'?calcPage():page==='library'?libraryPage():page==='editor'?editorPage():settingsPage()}</main></div><div id="toast" role="status" hidden></div>`;
 }
+function pageStart() { window.scrollTo({top:0,behavior:'instant'}); }
 let toastTimer;
 function toast(message) { $('toast').textContent=message; $('toast').hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>{$('toast').hidden=true;},6000); }
 function invalidate() { result=null; resultError=''; if ($('result')) $('result').innerHTML=resultMarkup(); }
@@ -174,7 +175,7 @@ document.addEventListener('click',async e=>{
     if (action==='navigate') {
       if (page==='editor' && !confirm('¿Descartar los cambios sin guardar del medicamento?')) return;
       if (page==='calculator') readCalc();
-      page=button.dataset.page; draft=null; render();
+      page=button.dataset.page; draft=null; render(); pageStart();
     } else if (action==='species') { readCalc();calc.species=button.dataset.value;invalidate();render(); }
     else if (action==='calculate') {
       readCalc();
@@ -185,11 +186,16 @@ document.addEventListener('click',async e=>{
         result=calculate({...calc,regimenSpecies:r?.species});resultError='';
       } catch(err) {result=null;resultError=err.message;}
       $('result').innerHTML=resultMarkup();
+      if (matchMedia('(max-width: 1050px)').matches) {
+        $('result').setAttribute('tabindex','-1');
+        $('result').focus({preventScroll:true});
+        $('result').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+      }
     } else if (action==='print') window.print();
     else if (action==='new-drug' || action==='edit') {
       editingId=action==='edit'?id:null;
       draft=editingId?structuredClone(library.drugs.find(d=>d.id===id)):{id:uid(),name:'',active:'',notes:'',precautions:'',reference:'',reviewDate:'',regimens:[],presentations:[]};
-      page='editor';render();
+      page='editor';render();pageStart();
     } else if (action==='cancel-edit') { if(confirm('¿Descartar los cambios sin guardar?')) {draft=null;page='library';render();} }
     else if (action==='add-regimen') {
       readDraft();draft.regimens.push({id:uid(),species:'canine',indication:'',dose:'',min:'',max:'',doseUnit:DOSE_UNITS[0],route:'',intervalHours:'',durationDays:''});render();
@@ -210,7 +216,7 @@ document.addEventListener('click',async e=>{
       const d=library.drugs.find(d=>d.id===id);
       if (!confirm(`¿Eliminar «${d.name}», sus pautas y presentaciones? Esta acción no puede deshacerse. Exporte un respaldo si lo necesita.`)) return;
       commitLibrary({...library,drugs:library.drugs.filter(x=>x.id!==id)});if(calc.drugId===id) applyDrug('');render();toast('Medicamento eliminado.');
-    } else if (action==='use') {applyDrug(id);page='calculator';render();}
+    } else if (action==='use') {applyDrug(id);page='calculator';render();pageStart();}
     else if (action==='export') {download(exportLibrary(library),`VetDose-respaldo-${new Date().toISOString().slice(0,10)}.json`);toast('Respaldo preparado. Compruebe que el archivo se haya guardado.');}
     else if (action==='recover') download(rawCorrupt,'VetDose-datos-originales.txt','text/plain');
     else if (action==='import') {

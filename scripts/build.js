@@ -8,4 +8,8 @@ const js = modules.map(source=>source.replace(/^import .*;\n/gm,'').replace(/^ex
 const portable = html.replace('<link rel="stylesheet" href="src/styles.css">',()=>`<style>\n${css}\n</style>`).replace('<script type="module" src="src/app.js"></script>',()=>`<script>\n(()=>{\n${js.replace(/<\/script/gi,'<\\/script')}\n})();\n</script>`);
 await mkdir(`${root}dist`,{recursive:true});
 await writeFile(`${root}dist/VetDose.html`,portable);
+await mkdir(`${root}docs`,{recursive:true});
+await writeFile(`${root}docs/index.html`,portable);
+await writeFile(`${root}docs/.nojekyll`,'');
 console.log(`HTML portable generado: dist/VetDose.html (${Buffer.byteLength(portable)} bytes)`);
+console.log('Sitio GitHub Pages generado: docs/index.html');

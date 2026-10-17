@@ -146,6 +146,45 @@ try {
     await action(first,'save-drug').click();await expectText(first.locator('#editor-error'),/otra pestaña/);assert.equal(await second.evaluate(()=>JSON.parse(localStorage.getItem('vetdose.library.v1')).drugs[0].name),'Producto ficticio de prueba');
     first.on('dialog',d=>d.accept());await c.close();
   });
+  for(const width of [320,360,390,430]) {
+    await check(`teléfono táctil de ${width}px: cálculo, biblioteca y respaldo`,async()=>{
+      const c=await browser.newContext({viewport:{width,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:2,reducedMotion:'reduce',acceptDownloads:true});
+      const p=await c.newPage();const mobileErrors=[];p.on('pageerror',e=>mobileErrors.push(e.message));
+      await p.goto(`http://127.0.0.1:${testPort}/docs/`);
+      await p.locator('#weight').waitFor();
+      assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+      const weightStyle=await p.locator('#weight').evaluate(el=>({font:parseFloat(getComputedStyle(el).fontSize),height:el.getBoundingClientRect().height}));
+      assert.ok(weightStyle.font>=16 && weightStyle.height>=44);
+      const weight=await p.locator('#weight').boundingBox(), patient=await p.locator('#patient').boundingBox();
+      assert.ok(patient.y>=weight.y+weight.height,'Los campos deben estar en una columna.');
+      const navigation=await p.locator('.nav').boundingBox();assert.ok(navigation.y+navigation.height<=845 && navigation.y>700);
+      for(const button of await p.locator('.nav button').all()) {const b=await button.boundingBox();assert.ok(b.width>=44 && b.height>=44);}
+      await p.locator('#weight').fill('4');await p.locator('#active').fill('Sustancia ficticia móvil');await p.locator('#dose').fill('6');await p.locator('#cp-amount').fill('12');await p.locator('#cp-perVolume').fill('1');await action(p,'calculate').tap();
+      await expectText(p.locator('#result .result-number'),/^2 mL$/);
+      assert.equal(await p.evaluate(()=>document.activeElement.id),'result');
+      const number=await p.locator('#result .result-number').boundingBox();const navBar=await p.locator('.nav').boundingBox();assert.ok(number.y>=0 && number.y+number.height<navBar.y,'El resultado debe verse sin quedar detrás del menú.');
+      await p.screenshot({path:`${projectRoot}test-results/phone-${width}.png`,fullPage:true});
+      await nav(p,'library');await action(p,'new-drug').tap();await p.locator('#ed-name').fill('Producto ficticio móvil');await p.locator('#ed-active').fill('Sustancia ficticia móvil');
+      await action(p,'add-regimen').tap();await p.locator('#r0-indication').fill('Prueba móvil');await p.locator('#r0-dose').fill('6');
+      await action(p,'add-presentation').tap();await p.locator('#p0-name').fill('Tableta ficticia');await p.locator('#p0-type').selectOption('tablet');await p.locator('#p0-amount').fill('12');
+      const half=p.locator('input[name="p0-fractions"][value="0.5"]');const box=await half.boundingBox();assert.ok(box.width>=22 && box.height>=22);await half.check();
+      assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+      await action(p,'save-drug').tap();await p.locator('#search').waitFor();await expectText(p.locator('#drug-list'),/Producto ficticio móvil/);
+      await action(p,'use').tap();await p.locator('#regimenId').selectOption({label:'Prueba móvil · Canino'});await p.locator('#presentationId').selectOption({label:'Tableta ficticia'});await action(p,'calculate').tap();await expectText(p.locator('#result .result-number'),/^2 tabletas$/);
+      await nav(p,'settings');const downloadPromise=p.waitForEvent('download');await action(p,'export').tap();const download=await downloadPromise;assert.equal(JSON.parse(await readFile(await download.path(),'utf8')).drugs.length,1);
+      await p.locator('#import-file').setInputFiles(await download.path());await action(p,'import').tap();await expectText(p.locator('#import-status'),/completada/);
+      assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.deepEqual(mobileErrors,[]);await c.close();
+    });
+  }
+  await check('teléfono en horizontal: controles legibles y sin desbordamiento',async()=>{
+    const c=await browser.newContext({viewport:{width:844,height:390},isMobile:true,hasTouch:true});const p=await c.newPage();await p.goto(`http://127.0.0.1:${testPort}/docs/index.html`);await p.locator('#weight').waitFor();
+    assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.ok(await p.locator('#weight').evaluate(el=>parseFloat(getComputedStyle(el).fontSize)>=16));await c.close();
+  });
+  await check('sitio Pages igual al HTML portable y listo para una ruta de proyecto',async()=>{
+    assert.equal(await readFile(`${projectRoot}docs/index.html`,'utf8'),await readFile(`${projectRoot}dist/VetDose.html`,'utf8'));
+    const c=await browser.newContext();const p=await c.newPage();const requests=[];p.on('request',r=>requests.push(r.url()));
+    await p.goto(`http://127.0.0.1:${testPort}/docs/index.html`);await p.locator('#weight').waitFor();assert.equal(requests.length,1);assert.ok(!(await p.content()).includes('src="/'));await c.close();
+  });
   await writeFile(`${projectRoot}test-results/browser-report.json`,JSON.stringify({timestamp:new Date().toISOString(),browser:browser.version(),passed,skipped,results},null,2));
   console.log(`\n${passed} comprobaciones de interfaz superadas; ${skipped.length} omitidas (Chromium ${browser.version()}).`);
 } finally {await browser?.close();server.kill('SIGTERM');}
