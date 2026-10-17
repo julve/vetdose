@@ -2,6 +2,8 @@
 
 Calculadora matemática para uso veterinario en caninos y felinos. **No contiene, propone ni descarga dosis farmacológicas.** El profesional introduce cada pauta, concentración, frecuencia y parámetro. Un cálculo correcto no determina que una administración sea clínicamente adecuada.
 
+**Guía para usuarios:** [Descargar PDF de 10 páginas](https://github.com/julve/vetdose/raw/refs/heads/vetdose-v1.0/docs/Guia-de-usuario-VetDose.pdf) · [Ver el PDF en GitHub](docs/Guia-de-usuario-VetDose.pdf). Incluye uso en teléfono, cálculos con datos ficticios, biblioteca, respaldos y solución de problemas. Puedes descargar el archivo y enviarlo por WhatsApp. Si el repositorio es privado, GitHub requiere una cuenta con acceso para descargarlo; los destinatarios del archivo PDF ya descargado no necesitan entrar a GitHub.
+
 La calculadora funciona sin cuentas, suscripciones, CDN, fuentes remotas, telemetría ni almacenamiento de datos en la nube. Se puede distribuir como archivo local o como sitio estático en GitHub Pages. El alojamiento entrega el código de la aplicación; los cálculos y todos los datos de biblioteca permanecen en el navegador. El identificador de paciente solo permanece en memoria durante la sesión; no forma parte de los respaldos. El botón de impresión permite incluirlo expresamente en el resultado impreso.
 
 ## Sitio web para teléfonos y computadoras
@@ -160,3 +162,15 @@ La ruta de caché anterior corresponde al entorno cloud; en otra computadora pue
 El runner usa `--no-sandbox` para Chromium en este contenedor de pruebas aislado. Si su sistema permite el sandbox normal, ejecute con `BROWSER_SANDBOX=1`. Esta opción solo corresponde al navegador de pruebas y no altera la aplicación, TLS ni la validación de paquetes.
 
 No hay dependencias de terceros en el producto distribuido. El empaquetador incorpora únicamente los tres módulos y los estilos locales; los datos de pruebas no se incluyen. Después de modificar fuentes, regenere tanto el archivo portable como `docs/index.html` con `npm run build` y repita los controles correspondientes. El ZIP portable es un paquete de distribución; actualícelo también al publicar una nueva versión.
+
+### Regenerar la guía PDF
+
+La guía está en `docs/Guia-de-usuario-VetDose.pdf`. Sus capturas usan datos ficticios y se guardan en `docs/guide-assets/`. Para regenerarla con Chromium, Playwright Core, Python y las fuentes DejaVu Sans instaladas:
+
+```sh
+node scripts/capture-guide.js
+python3 -m pip install -r scripts/guide-requirements.txt
+python3 scripts/generate-user-guide.py
+```
+
+Estas herramientas solo se necesitan para editar la documentación; no son dependencias de la app. Puede indicar la carpeta de fuentes TTF con `GUIDE_FONT_DIR`. El generador comprueba que la guía tenga las 10 páginas previstas; revise también las páginas renderizadas al modificar el contenido. Una vez publicado GitHub Pages desde `/docs`, el PDF también se sirve en la dirección del sitio seguida de `Guia-de-usuario-VetDose.pdf`.

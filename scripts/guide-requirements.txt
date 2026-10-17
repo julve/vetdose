@@ -1,0 +1,3 @@
+# Optional tooling for regenerating the PDF; not needed by the app.
+reportlab==4.4.9
+Pillow==12.3.0
